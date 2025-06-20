@@ -3,6 +3,7 @@
 #include "Job.h"
 #include "NowUser.h"
 #include "Image.h"
+#include "Monster.h"
 
 void inputReturn() //정한 숫자 외 입력시 오류발생 메서드
 {
