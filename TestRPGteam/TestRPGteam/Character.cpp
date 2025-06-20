@@ -51,6 +51,17 @@ void Character::UpdateLevelStats() {
     chAttack = chAttack + (chLevel * 5);    // 레벨업 시 체력은 최대치까지 완전히 회복!
 }
 
+//체력 변동 메서드
+void Character::chHPUpDown(int changeHP) {
+    chHP += changeHP;
+    if (chHP <= 0) { chHP = 0; }
+}
+
+//공격력 변동 메서드
+void Character::chAttackUpDown(int changeAt) {
+    chAttack += changeAt;
+}
+
 //levelUp()시 경험치 max 초기화 메서드
 void Character::maxUp() {
     int maxEXP[10] = { 0, 10, 30, 50, 70, 100, 150, 200, 250, 300 }; // now Level에서 level+1레벨이 되기 위한 경험치
@@ -70,8 +81,8 @@ long long Character::getGold() {
 }
 
 //소지금 추가/감소 메서드
-long long Character::setGold(long long a) {
-    return chGold + a;
+void Character::setGold(long long a) {
+    chGold += a;
 }
 
 //현재 캐릭터 상태 확인 메서드

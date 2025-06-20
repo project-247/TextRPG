@@ -49,6 +49,12 @@ public:
     //levelUp()시 체력과 공격력 초기화 메서드
     void UpdateLevelStats();
 
+    //HP 변경 메서드
+    void chHPUpDown(int changeHP);
+
+    //Attack 변경 메서드
+    void chAttackUpDown(int changeAt);
+
     //levelUp()시 경험치 max 초기화 메서드
     void maxUp();
 
@@ -59,7 +65,7 @@ public:
     long long getGold();
 
     //소지금 추가/감소 메서드
-    long long setGold(long long a);
+    void setGold(long long a);
 
     //현재 캐릭터 상태 확인 메서드
     void nowCharacter();
