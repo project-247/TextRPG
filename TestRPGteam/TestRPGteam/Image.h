@@ -12,5 +12,7 @@ public:
 
 	void cat3();
 
+	void monster();
+
 };
 

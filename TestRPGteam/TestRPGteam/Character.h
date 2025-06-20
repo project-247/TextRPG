@@ -13,7 +13,7 @@ private:
     int chHP = 200;             //캐릭터 체력. setHP()로 설정. getHP()로 반환
     int chAttack = 30;         //캐릭터 공격력. setAttack()로 설정. getAttack()로 반환
     int chExperience = 0;        //캐릭터 레벨 경험치. setExp()로 설정. getExp()로 반환
-    int chMax = 10;             //n레벨 경험치 // 근데 100고정해야되나?
+    int chMax = 10;             //n레벨 경험치 // 변경했으니 ReadMe에 작성하기
     long long chGold = 100;       //초기 소지금액
     int maxHP = 200;
 
@@ -68,5 +68,9 @@ public:
 
     //현재 캐릭터 상태 확인 메서드
     void nowCharacter();
+    
+
+    //캐릭터 레벨 반환 메서드
+    int GetChLevel();
 
 };

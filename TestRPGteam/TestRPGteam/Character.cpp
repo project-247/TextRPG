@@ -92,3 +92,8 @@ void Character::nowCharacter() {
     std::cout << "레벨 : " << chLevel << " (" << chExperience << "/" << chMax << ")" << std::endl;
     std::cout << "소지금 : " << chGold << "G" << std::endl;
 }
+
+//캐릭터 레벨 반환 메서드
+int Character::GetChLevel() {
+    return chLevel;
+}
