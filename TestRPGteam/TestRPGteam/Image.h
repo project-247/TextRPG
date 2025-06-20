@@ -8,5 +8,9 @@ public:
 
 	void cat();
 
+	void cat2();
+
+	void cat3();
+
 };
 
