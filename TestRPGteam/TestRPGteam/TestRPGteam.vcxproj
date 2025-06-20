@@ -142,6 +142,10 @@
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="monster.h" />
+    <ClInclude Include="MS_Bencie.h" />
+    <ClInclude Include="MS_Golem.h" />
+    <ClInclude Include="MS_Mimic.h" />
+    <ClInclude Include="MS_Slime.h" />
     <ClInclude Include="NowUser.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="WeaponMap.h" />
