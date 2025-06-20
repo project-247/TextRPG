@@ -1,9 +1,6 @@
-#ifndef MS_GOLEM_H
-#define MS_GOLEM_H
+#pragma once
 #include "Monster.h"
 
 class Golem : public Monster {
 
 };
-
-#endif

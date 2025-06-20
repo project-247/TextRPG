@@ -1,5 +1,4 @@
-#ifndef CHARACTER_H_
-#define CHARACTER_H_
+#pragma once
 #include <string>
 
 class Character {
@@ -71,5 +70,3 @@ public:
     void nowCharacter();
 
 };
-
-#endif

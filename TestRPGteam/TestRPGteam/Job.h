@@ -1,5 +1,4 @@
-#ifndef JOB_H_
-#define JOB_H_
+#pragma once
 #include <iostream>
 
 extern int classNumber;
@@ -19,5 +18,3 @@ std::string getJob();
 
 //main()에서 Job 선택 전 확인 메서드
 std::string returnInputJobName(int input);
-
-#endif

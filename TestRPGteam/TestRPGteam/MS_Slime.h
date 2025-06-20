@@ -1,10 +1,7 @@
-#ifndef MS_SLIME_H
-#define MS_SLIME_H
+#pragma once
 #include "Monster.h"
 
 class Slime : public Monster {
 
 };
 
-
-#endif

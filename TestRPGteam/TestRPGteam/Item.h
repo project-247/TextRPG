@@ -1,6 +1,4 @@
-#ifndef ITEM_H
-#define ITEM_H
-
+#pragma once
 #include <string>
 
 enum class ItemType {
@@ -25,5 +23,3 @@ public:
 
     void use();
 };
-
-#endif

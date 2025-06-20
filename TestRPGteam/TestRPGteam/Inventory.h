@@ -1,5 +1,4 @@
-#ifndef INVENTORY_H
-#define INVENTORY_H
+#pragma once
 
 #include <vector>
 #include "Item.h"
@@ -13,5 +12,3 @@
 //    void showItems();
 //    void useItem(int index);
 //};
-
-#endif

@@ -1,5 +1,4 @@
-#ifndef NOWUSER_H_
-#define NOWUSER_H_
+#pragma once
 
 class Character;
 
@@ -13,5 +12,3 @@ public:
 
 	~NowUser() {}
 };
-
-#endif

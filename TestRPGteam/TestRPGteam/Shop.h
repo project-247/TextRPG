@@ -1,6 +1,4 @@
 #pragma once
-#ifndef SHOP_H
-#define SHOP_H
 #include"monster.h"
 #include "Item.h"
 #include "Inventory.h"
@@ -17,5 +15,3 @@
 //    void showItems();
 //    void buyItem(int index, Inventory& inventory);
 //};
-
-#endif

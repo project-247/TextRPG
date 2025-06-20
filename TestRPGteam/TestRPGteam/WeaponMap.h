@@ -1,5 +1,4 @@
-#ifndef WEAPONMAP_H
-#define WEAPONMAP_H
+#pragma once
 
 #include <map>
 #include <vector>
@@ -41,4 +40,3 @@ public:
     }
 };
 
-#endif
