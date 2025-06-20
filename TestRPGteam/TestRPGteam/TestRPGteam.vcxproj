@@ -141,7 +141,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
-    <ClInclude Include="monster.h" />
+    <ClInclude Include="Monster.h" />
     <ClInclude Include="MS_Bencie.h" />
     <ClInclude Include="MS_Golem.h" />
     <ClInclude Include="MS_Mimic.h" />

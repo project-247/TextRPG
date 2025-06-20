@@ -1,6 +1,4 @@
-#ifndef MONSTER_H_
-#define MONSTER_H_
-
+#pragma once
 #include <iostream>
 #include <string>
 #include <ctime>
@@ -35,4 +33,3 @@ public:
 		getHealth -= damage;
 	}
 };
-#endif
