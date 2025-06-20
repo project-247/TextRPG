@@ -2,6 +2,6 @@
 #include "Monster.h"
 
 class Slime : public Monster {
-
+	
 };
 
