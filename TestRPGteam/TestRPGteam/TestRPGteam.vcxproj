@@ -127,6 +127,7 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="NowUser.cpp" />
     <ClCompile Include="TestRPGteam.cpp" />
+    <ClCompile Include="Monster.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h" />
