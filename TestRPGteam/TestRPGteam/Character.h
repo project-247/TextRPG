@@ -69,7 +69,6 @@ public:
     //현재 캐릭터 상태 확인 메서드
     void nowCharacter();
     
-
     //캐릭터 레벨 반환 메서드
     int GetChLevel();
 
