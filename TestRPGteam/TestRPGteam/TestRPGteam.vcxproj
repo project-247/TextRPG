@@ -128,6 +128,8 @@
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Job.cpp" />
+    <ClCompile Include="Job.h" />
     <ClCompile Include="NowUser.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="TestRPGteam.cpp" />
@@ -139,6 +141,7 @@
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="monster.h" />
     <ClInclude Include="NowUser.h" />
     <ClInclude Include="Shop.h" />
     <ClInclude Include="WeaponMap.h" />
