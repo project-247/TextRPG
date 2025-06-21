@@ -1,7 +1,7 @@
 #pragma once
 #include <iostream>
 
-extern int classNumber;
+extern int ClassNumber;
 
 enum Character_Class {
 	Jobless, //"무직"
@@ -11,10 +11,10 @@ enum Character_Class {
 };
 
 //직업생성메서드
-void createJob(int input);
+void CreateJob(int input);
 
 //직업 번호를 문자열로 반환 메서드
 std::string getJob();
 
 //main()에서 Job 선택 전 확인 메서드
-std::string returnInputJobName(int input);
+std::string ReturnInputJobName(int input);

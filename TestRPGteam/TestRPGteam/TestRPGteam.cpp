@@ -5,7 +5,7 @@
 #include "Image.h"
 #include "Monster.h"
 
-void inputReturn() //정한 숫자 외 입력시 오류발생 메서드
+void InputReturn() //정한 숫자 외 입력시 오류발생 메서드
 {
     system("cls");
     std::cout << "---------------------------\n";
@@ -19,54 +19,54 @@ void inputReturn() //정한 숫자 외 입력시 오류발생 메서드
 int main()
 {
     //정경주 코드 시작 - 캐릭터 이름 설정
-    std::string name;
-    int input = 1;
-    int input2 = 1;
-    Character* character = Character::newCharacter();
-    NowUser* nowUser = new NowUser();
-    Image image;
+    std::string Name;
+    int Input = 1;
+    int Input2 = 1;
+    Character* Character = Character::NewCharacter();
+    NowUser* NowUserStatus = new NowUser();
+    Image Images;
 
-    image.church();
-    image.triforce();
-    image.cat();
+    Images.Church();
+    Images.Triforce();
+    Images.Cat();
 
     while (1)
     {
         std::cout << "당신의 이름을 입력하세요 : ";
-        getline(std::cin, name);
-        std::cout << name << ", 당신의 이름이 맞나요?\n1. 예 2. 아니오" << std::endl;
-        std::cin >> input;
-        if (input == 1) {
+        getline(std::cin, Name);
+        std::cout << Name << ", 당신의 이름이 맞나요?\n1. 예 2. 아니오" << std::endl;
+        std::cin >> Input;
+        if (Input == 1) {
             //캐릭터 생성
-            character->setChName(name);
+            Character->SetChName(Name);
             std::cin.ignore();
             system("cls"); //콘솔 초기화
-            std::cout << "환영합니다. " << character->getChName() << "님!" << std::endl;
+            std::cout << "환영합니다. " << Character->GetChName() << "님!" << std::endl;
             break;
         }
-        inputReturn();
+        InputReturn();
     }
 
-    while (classNumber == 0)//무직일 때
+    while (ClassNumber == 0)//무직일 때
     {
         std::cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직" << std::endl;
-        std::cin >> input;
+        std::cin >> Input;
         //예외 처리
-        if (input > 0 && input < 5)
+        if (Input > 0 && Input < 5)
         {
-            std::cout << returnInputJobName(input) << "(으)로 선택하시겠습니까 ? \n1.예 2. 아니오" << std::endl;
-            std::cin >> input2;
+            std::cout << ReturnInputJobName(Input) << "(으)로 선택하시겠습니까 ? \n1.예 2. 아니오" << std::endl;
+            std::cin >> Input2;
         }
-        if (input2 == 1) {
+        if (Input2 == 1) {
             system("cls");
             //직업 생성
-            createJob(input);
+            CreateJob(Input);
             break;
         }
-        inputReturn();
+        InputReturn();
     }
 
-    nowUser->returnUser();
+    NowUserStatus->ReturnUser();
     std::cout << std::endl;
 
     //정경주 코드 종료 - 캐릭터 이름 설정

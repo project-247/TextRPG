@@ -2,11 +2,11 @@
 
 class Image {
 public:
-	void church();
+	void Church();
 
-	void triforce();
+	void Triforce();
 
-	void cat();
+	void Cat();
 
 	void cat2();
 

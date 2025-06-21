@@ -1,7 +1,7 @@
 #include "Image.h"
 #include <iostream>
 
-void Image::church() {
+void Image::Church() {
     std::cout << R"(
     ¡ã¡ã  ¡ã¡ã  ¡ã¡ã  ¡ã¡ã
     ¡á¡á  ¡á¡á  ¡á¡á  ¡á¡á
@@ -13,7 +13,7 @@ void Image::church() {
 
 }
 
-void Image::triforce() {
+void Image::Triforce() {
     std::cout << "\n                   \033[33m¡Ú\033[0m" << std::endl;
     std::cout << R"(
                  ¡ä¡ä¡ä
@@ -25,7 +25,7 @@ void Image::triforce() {
 ¢¿¢À¢¿¢À¢¿¢À¢¿¢À¢¿¢À¢¿¢À¢¿¢À¢¿¢À¢¿¢À¢¿¢À)"<<std::endl;
 }
 
-void Image::cat() {
+void Image::Cat() {
     std::cout << R"(
   ¡ã          ¡ã
   ¡á¡á      ¡á¡á

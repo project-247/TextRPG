@@ -8,7 +8,7 @@ public:
 	NowUser() {}
 
 	//유저 상태 반환 메서드
-	void returnUser();
+	void ReturnUser();
 
 	~NowUser() {}
 };

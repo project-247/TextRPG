@@ -12,7 +12,7 @@
 //void Shop::showMenu() {
 //    int choice;
 //
-//    Character* player = Character::newCharacter();
+//    Character* player = Character::NewCharacter();
 //    Inventory playerInventory;  // 전달받을 수도 있음 (지금은 예시로 생성)
 //
 //    while (true) {
@@ -61,12 +61,12 @@
 //    Item item = stock[index - 1];
 //    long long price = item.getValue();
 //
-//    if (player->getGold() < price) {
+//    if (player->GetGold() < price) {
 //        std::cout << "소지금이 부족합니다!\n";
 //        return;
 //    }
 //
-//    player->setGold(-price);  // 골드 차감
+//    player->SetGold(-price);  // 골드 차감
 //    inventory.addItem(item);  // 인벤토리에 아이템 추가
 //    std::cout << item.getName() << "을(를) 구매했습니다!\n";
 //}
