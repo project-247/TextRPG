@@ -130,7 +130,6 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Job.cpp" />
     <ClCompile Include="Job.h" />
-    <ClCompile Include="MS_Slime.cpp" />
     <ClCompile Include="NowUser.cpp" />
     <ClCompile Include="Shop.cpp" />
     <ClCompile Include="TestRPGteam.cpp" />

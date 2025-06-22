@@ -5,9 +5,12 @@
 class Golem : public Monster {
 public:
 
-	Golem(string name, int health, int attack) {
-		getMosterName = "거대한골렘";
-		getMosterHealth = 50;
-		getMosterAttack = 30;
+	// - 메인쪽에서 '레벨 정수값 넣어"줘" 입니다.'
+	// - 체력: (레벨 × 50)
+	// - 공격력 : (레벨 × 15)
+	Golem(int level) {
+		MosterName = "덩치만 큰 골렘";
+		MosterHealth = level * 50;
+		MosterAttack = level * 15;
 	}
 };
