@@ -14,6 +14,10 @@ protected:
 	int getMosterAttack; // 몬스터 데미지
 
 public:
+	// 몬스터 랜덤으로 부르는 메소드 ??를 써야되는데 음 ?아닌가 - 보류
+
+
+
 	Monster() {
 		getMosterName = "null";
 		getMosterHealth = -1;
@@ -31,6 +35,8 @@ public:
 	virtual int getAttack(); // 몬스터에게 공력력을 설정해주는 속성
 	
 	void takeDamage(int damage); //몬스터가 피해를 받는 메서드
+
+	virtual int KillMonsterXP(); //몬스터를 처리했을때 나오는 경험치
 
 	virtual ~Monster(){
 		cout << "몬스터가 사망하였습니다." << endl;

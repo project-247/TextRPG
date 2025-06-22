@@ -23,6 +23,10 @@ void Monster::takeDamage(int damage)
 		cout << getMosterName << "ÀÌ(°¡) Á×¾ú½À´Ï´Ù.";
 	}
 }
+
+int Monster::KillMonsterXP() {
+	
+}
 // ½½¶óÀÓ , °ñ·½ , º¥½Ã , ¹Ì¹Í
 // Slime_Core, Golem_Core, Bencie_Core, Mimic_Core
 

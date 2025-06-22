@@ -48,6 +48,9 @@
     <ClCompile Include="Job.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="MS_Slime.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Character.h">
@@ -75,6 +78,18 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="monster.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MS_Bencie.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MS_Golem.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MS_Mimic.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="MS_Slime.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
