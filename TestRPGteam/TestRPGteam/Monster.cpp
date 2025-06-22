@@ -24,6 +24,7 @@ void Monster::takeDamage(int damage)
 	if (MonsterHealth <= 0){
 		cout << MonsterName << "이(가)" << damage << "의 피해를 입었습니다. 남은 체력: " << MonsterHealth << endl;
 		cout << MonsterName << "을(를) 처리했습니다!";
+
 	}
 	else {
 		cout << MonsterName << "에게" << damage << " 의 피해를 입혔습니다. 남은 체력: " << MonsterHealth << endl;
