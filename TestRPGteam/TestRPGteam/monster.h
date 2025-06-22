@@ -9,24 +9,24 @@ using namespace std;
 class Monster
 {
 protected:
-	string MosterName; // 몬스터 이름
-	int MosterHealth;// 몬스터 체력
-	int MosterAttack; // 몬스터 데미지
-	/*int experience;*/ // 몬스터 처리시 얻는 경험치
+	string MonsterName; // 몬스터 이름
+	int MonsterHealth;// 몬스터 체력
+	int MonsterAttack; // 몬스터 데미지
+	int Experience = 20; // 몬스터 처리시 얻는 경험치 //히히
 
 public:
 	// 몬스터 랜덤으로 부르는 메소드 ??를 써야되는데 음 ?아닌가 - 보류
-
+	// - 성신님 죄송해요 몬스터 랜덤으로 소환되게 메인에서 부탁드려요..
 
 	// 뭐가 문제 생겼을때 나오는 Null 값(이거 없어도 되는건가?)
 	Monster() {
-		MosterName = "null";
-		MosterHealth = -1;
-		MosterAttack = -1;
+		MonsterName = "null";
+		MonsterHealth = -1;
+		MonsterAttack = -1;
 	}
 	// - ㅇㅇ? 이게 맞나?? 맞겠지
 	Monster(string name, int health, int attack)
-		: MosterName(name), MosterHealth(health), MosterAttack(attack) {
+		: MonsterName(name), MonsterHealth(health), MonsterAttack(attack) {
 		cout << "// - 몬스터생성확인용";
 	}
 	
@@ -42,6 +42,5 @@ public:
 
 
 	virtual ~Monster(){
-		cout << "몬스터가 사망하였습니다." << endl;
 	}
 };

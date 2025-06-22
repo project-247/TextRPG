@@ -9,8 +9,9 @@ public:
 	// - Ã¼·Â: (·¹º§ ¡¿ 50)
 	// - °ø°Ý·Â : (·¹º§ ¡¿ 15)
 	Golem(int level) {
-		MosterName = "µ¢Ä¡¸¸ Å« °ñ·½";
-		MosterHealth = level * 50;
-		MosterAttack = level * 15;
+		MonsterName = "µ¢Ä¡¸¸ Å« °ñ·½";
+		MonsterHealth = level * 50;
+		MonsterAttack = level * 15;
+		Experience = (level * 3) / 2;
 	}
 };

@@ -9,8 +9,9 @@ public:
 	// - 체력: (레벨 × 30)
 	// - 공격력 : (레벨 × 35)
 	Bencie(int level) {
-		MosterName = "노래못하는 벤시";
-		MosterHealth = level * 30;
-		MosterAttack = level * 35;
+		MonsterName = "노래못하는 벤시";
+		MonsterHealth = level * 30;
+		MonsterAttack = level * 35;
+		Experience = (level * 3) / 2;
 	}
 };

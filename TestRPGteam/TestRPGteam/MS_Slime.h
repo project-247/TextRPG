@@ -9,8 +9,9 @@ public:
 	// - 체력: (레벨 × 30)
 	// - 공격력 : (레벨 × 5)
 	Slime(int level) {
-		MosterName = "귀여운슬라임";
-		MosterHealth = level * 30;
-		MosterAttack = level * 5;
+		MonsterName = "귀여운슬라임";
+		MonsterHealth = level * 30;
+		MonsterAttack = level * 5;
+		Experience = (level * 3) / 2;
 	}
 };
