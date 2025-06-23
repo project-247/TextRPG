@@ -1,75 +1,75 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 
 class Character {
 private:
 
-    //½Ì±ÛÅæ Ä³¸¯ÅÍ °´Ã¼¸¦ °¡¸®Å°´Â static Æ÷ÀÎÅÍ
-    static Character* Instance;
+	//ì‹±ê¸€í†¤ ìºë¦­í„° ê°ì²´ë¥¼ ê°€ë¦¬í‚¤ëŠ” static í¬ì¸í„°
+	static Character* Instance;
 
-	//Ä³¸¯ÅÍ ¸â¹öº¯¼ö
-    std::string ChName;   //Ä³¸¯ÅÍ ÀÌ¸§. setName()ÇÔ¼ö·Î ¼³Á¤. getChName()·Î ¹İÈ¯
-    int ChLevel = 1;          //Ä³¸¯ÅÍ ·¹º§. setLevel()·Î ¼³Á¤. getLevel()·Î ¹İÈ¯
-    int ChHP = 200;             //Ä³¸¯ÅÍ Ã¼·Â. setHP()·Î ¼³Á¤. getHP()·Î ¹İÈ¯
-    int ChAttack = 30;         //Ä³¸¯ÅÍ °ø°İ·Â. setAttack()·Î ¼³Á¤. getAttack()·Î ¹İÈ¯
-    int ChExperience = 0;        //Ä³¸¯ÅÍ ·¹º§ °æÇèÄ¡. setExp()·Î ¼³Á¤. getExp()·Î ¹İÈ¯
-    int ChMax = 10;             //n·¹º§ °æÇèÄ¡ // º¯°æÇßÀ¸´Ï ReadMe¿¡ ÀÛ¼ºÇÏ±â
-    long long ChGold = 100;       //ÃÊ±â ¼ÒÁö±İ¾×
-    int MaxHP = 200;
+	//ìºë¦­í„° ë©¤ë²„ë³€ìˆ˜
+	std::string ChName;   //ìºë¦­í„° ì´ë¦„. setName()í•¨ìˆ˜ë¡œ ì„¤ì •. getChName()ë¡œ ë°˜í™˜
+	int ChLevel = 1;          //ìºë¦­í„° ë ˆë²¨. setLevel()ë¡œ ì„¤ì •. getLevel()ë¡œ ë°˜í™˜
 
-    //Ä³¸¯ÅÍ »ı¼ºÀÚ (½Ì±ÛÅæ)
-    Character() {}
+	int ChExperience = 0;        //ìºë¦­í„° ë ˆë²¨ ê²½í—˜ì¹˜. setExp()ë¡œ ì„¤ì •. getExp()ë¡œ ë°˜í™˜
+	int ChMax = 10;             //në ˆë²¨ ê²½í—˜ì¹˜ // ë³€ê²½í–ˆìœ¼ë‹ˆ ReadMeì— ì‘ì„±í•˜ê¸°
+	long long ChGold = 100;       //ì´ˆê¸° ì†Œì§€ê¸ˆì•¡
+	int MaxHP = 200;
+
+	//ìºë¦­í„° ìƒì„±ì (ì‹±ê¸€í†¤)
+	Character() {}
 
 public:
+	int ChHP = 200;             //ìºë¦­í„° ì²´ë ¥. setHP()ë¡œ ì„¤ì •. getHP()ë¡œ ë°˜í™˜
+	int ChAttack = 30;         //ìºë¦­í„° ê³µê²©ë ¥. setAttack()ë¡œ ì„¤ì •. getAttack()ë¡œ ë°˜í™˜
+	//ë³µì‚¬ ìƒì„±ì delete
+	Character(const Character&) = delete;
+	//ëŒ€ì… ìƒì„±ì delete
+	Character& operator=(const Character&) = delete;
+	//ì´ë™ ìƒì„±ì delete
+	Character(Character&&) = delete;
+	//ì´ë™ëŒ€ì… ìƒì„±ì delete
+	Character& operator=(Character&&) = delete;
+	//ì†Œë©¸ì
+	~Character() = delete;
 
-    //º¹»ç »ı¼ºÀÚ delete
-    Character(const Character&) = delete;
-    //´ëÀÔ »ı¼ºÀÚ delete
-    Character& operator=(const Character&) = delete;
-    //ÀÌµ¿ »ı¼ºÀÚ delete
-    Character(Character&&) = delete;
-    //ÀÌµ¿´ëÀÔ »ı¼ºÀÚ delete
-    Character& operator=(Character&&) = delete;
-    //¼Ò¸êÀÚ
-    ~Character() = delete;
+	//ìºë¦­í„° ìƒì„± ë©”ì„œë“œ
+	static Character* NewCharacter();
 
-    //Ä³¸¯ÅÍ »ı¼º ¸Ş¼­µå
-    static Character* NewCharacter();
+	//ìºë¦­í„° ê²½í—˜ì¹˜ ìŠµë“ ë©”ì„œë“œ
+	void ChExpUp(int);   //ì…ë ¥ : ëª¬ìŠ¤í„° ì²˜ì¹˜ ê²½í—˜ì¹˜
 
-    //Ä³¸¯ÅÍ °æÇèÄ¡ ½Àµæ ¸Ş¼­µå
-    void ChExpUp(int);   //ÀÔ·Â : ¸ó½ºÅÍ Ã³Ä¡ °æÇèÄ¡
+	// (ê²½í—˜ì¹˜ > max)ì¼ ë•Œ ë ˆë²¨ ìƒìŠ¹í•˜ëŠ” ë©”ì„œë“œ
+	void LevelUp();
 
-    // (°æÇèÄ¡ > max)ÀÏ ¶§ ·¹º§ »ó½ÂÇÏ´Â ¸Ş¼­µå
-    void LevelUp();
+	//ì´ë¦„ ë³€ê²½ ë©”ì„œë“œ
+	void SetChName(std::string);
 
-    //ÀÌ¸§ º¯°æ ¸Ş¼­µå
-    void SetChName(std::string);
+	//LevelUp()ì‹œ ì²´ë ¥ê³¼ ê³µê²©ë ¥ ì´ˆê¸°í™” ë©”ì„œë“œ
+	void UpdateLevelStats();
 
-    //LevelUp()½Ã Ã¼·Â°ú °ø°İ·Â ÃÊ±âÈ­ ¸Ş¼­µå
-    void UpdateLevelStats();
+	//HP ë³€ê²½ ë©”ì„œë“œ
+	void ChHPUpDown(int);
 
-    //HP º¯°æ ¸Ş¼­µå
-    void ChHPUpDown(int);
+	//Attack ë³€ê²½ ë©”ì„œë“œ
+	void ChAttackUpDown(int);
 
-    //Attack º¯°æ ¸Ş¼­µå
-    void ChAttackUpDown(int);
+	//LevelUp()ì‹œ ê²½í—˜ì¹˜ max ì´ˆê¸°í™” ë©”ì„œë“œ
+	void MaxUp();
 
-    //LevelUp()½Ã °æÇèÄ¡ max ÃÊ±âÈ­ ¸Ş¼­µå
-    void MaxUp();
+	//ìºë¦­í„° ì´ë¦„ ë°˜í™˜ ë©”ì„œë“œ
+	std::string GetChName();
 
-    //Ä³¸¯ÅÍ ÀÌ¸§ ¹İÈ¯ ¸Ş¼­µå
-    std::string GetChName();
+	//ì†Œì§€ê¸ˆ ë°˜í™˜ ë©”ì„œë“œ
+	long long GetGold();
 
-    //¼ÒÁö±İ ¹İÈ¯ ¸Ş¼­µå
-    long long GetGold();
+	//ì†Œì§€ê¸ˆ ì¶”ê°€/ê°ì†Œ ë©”ì„œë“œ
+	void SetGold(long long);
 
-    //¼ÒÁö±İ Ãß°¡/°¨¼Ò ¸Ş¼­µå
-    void SetGold(long long);
+	//í˜„ì¬ ìºë¦­í„° ìƒíƒœ í™•ì¸ ë©”ì„œë“œ
+	void NowCharacter();
 
-    //ÇöÀç Ä³¸¯ÅÍ »óÅÂ È®ÀÎ ¸Ş¼­µå
-    void NowCharacter();
-    
-    //Ä³¸¯ÅÍ ·¹º§ ¹İÈ¯ ¸Ş¼­µå
-    int GetChLevel();
+	//ìºë¦­í„° ë ˆë²¨ ë°˜í™˜ ë©”ì„œë“œ
+	int GetChLevel();
 
 };

@@ -1,100 +1,100 @@
-#include "Character.h"
+ï»¿#include "Character.h"
 #include <iostream>
 #include <string>
 
-//Ä³¸¯ÅÍ Á¤Àû º¯¼ö ÃÊ±âÈ­ (¿ÜºÎ¿¡¼­ Á¤ÀÇ)
+//ìºë¦­í„° ì •ì  ë³€ìˆ˜ ì´ˆê¸°í™” (ì™¸ë¶€ì—ì„œ ì •ì˜)
 Character* Character::Instance = nullptr;
 
-//Ä³¸¯ÅÍ »ı¼º ¸Ş¼­µå
+//ìºë¦­í„° ìƒì„± ë©”ì„œë“œ
 Character* Character::NewCharacter() {
-    //°´Ã¼°¡ ¾ø´Ù¸é »ı¼º
-    if (Instance == nullptr) {
-        Instance = new Character();
-    }
-    //Ä³¸¯ÅÍ °´Ã¼ ¹İÈ¯
-    return Instance;
+	//ê°ì²´ê°€ ì—†ë‹¤ë©´ ìƒì„±
+	if (Instance == nullptr) {
+		Instance = new Character();
+	}
+	//ìºë¦­í„° ê°ì²´ ë°˜í™˜
+	return Instance;
 }
 
-//Ä³¸¯ÅÍ °æÇèÄ¡ ½Àµæ ¸Ş¼­µå
-void Character::ChExpUp(int exp) {   //ÀÔ·Â : ¸ó½ºÅÍ Ã³Ä¡ °æÇèÄ¡
-    ChExperience += exp;
-    if (ChExperience >= ChMax) {
-        LevelUp();
-    }
+//ìºë¦­í„° ê²½í—˜ì¹˜ ìŠµë“ ë©”ì„œë“œ
+void Character::ChExpUp(int exp) {   //ì…ë ¥ : ëª¬ìŠ¤í„° ì²˜ì¹˜ ê²½í—˜ì¹˜
+	ChExperience += exp;
+	if (ChExperience >= ChMax) {
+		LevelUp();
+	}
 }
 
-// (°æÇèÄ¡ > max)ÀÏ ¶§ ·¹º§ »ó½ÂÇÏ´Â ¸Ş¼­µå
+// (ê²½í—˜ì¹˜ > max)ì¼ ë•Œ ë ˆë²¨ ìƒìŠ¹í•˜ëŠ” ë©”ì„œë“œ
 void Character::LevelUp() {
-    if (ChLevel < 9) {
-        ++ChLevel;
-        std::cout << "ÃàÇÏÇÕ´Ï´Ù. ·¹º§ÀÌ " << ChLevel << "ÀÌ µÇ¾ú½À´Ï´Ù!" << std::endl;
-        //max ÃÊ±âÈ­
-        MaxUp();
-        UpdateLevelStats();
-    }
-    if (ChLevel == 9) {
-        ++ChLevel;
-        UpdateLevelStats();
-        std::cout << "ÃàÇÏÇÕ´Ï´Ù. ·¹º§ÀÌ " << ChLevel << "ÀÌ µÇ¾ú½À´Ï´Ù! ¸¸·¾ ¤º¤º" << std::endl;
-    }
+	if (ChLevel < 9) {
+		++ChLevel;
+		std::cout << "ì¶•í•˜í•©ë‹ˆë‹¤. ë ˆë²¨ì´ " << ChLevel << "ì´ ë˜ì—ˆìŠµë‹ˆë‹¤!" << std::endl;
+		//max ì´ˆê¸°í™”
+		MaxUp();
+		UpdateLevelStats();
+	}
+	if (ChLevel == 9) {
+		++ChLevel;
+		UpdateLevelStats();
+		std::cout << "ì¶•í•˜í•©ë‹ˆë‹¤. ë ˆë²¨ì´ " << ChLevel << "ì´ ë˜ì—ˆìŠµë‹ˆë‹¤! ë§Œë ™ ã…Šã…Š" << std::endl;
+	}
 }
 
-//ÀÌ¸§ º¯°æ ¸Ş¼­µå
+//ì´ë¦„ ë³€ê²½ ë©”ì„œë“œ
 void Character::SetChName(std::string UName) {
-    ChName = UName;
+	ChName = UName;
 }
 
-//LevelUp()½Ã °æÇèÄ¡ max ÃÊ±âÈ­ ¸Ş¼­µå
+//LevelUp()ì‹œ ê²½í—˜ì¹˜ max ì´ˆê¸°í™” ë©”ì„œë“œ
 void Character::MaxUp() {
-    int maxEXP[10] = { 0, 10, 30, 50, 70, 100, 150, 200, 250, 300 }; // now Level¿¡¼­ level+1·¹º§ÀÌ µÇ±â À§ÇÑ °æÇèÄ¡
-    if (ChLevel > 1 && ChLevel < 10) {
-        ChMax = maxEXP[ChLevel];
-    }
+	int maxEXP[10] = { 0, 10, 30, 50, 70, 100, 150, 200, 250, 300 }; // now Levelì—ì„œ level+1ë ˆë²¨ì´ ë˜ê¸° ìœ„í•œ ê²½í—˜ì¹˜
+	if (ChLevel > 1 && ChLevel < 10) {
+		ChMax = maxEXP[ChLevel];
+	}
 }
 
-//LevelUp()½Ã Ã¼·Â°ú °ø°İ·Â ÃÊ±âÈ­ ¸Ş¼­µå
+//LevelUp()ì‹œ ì²´ë ¥ê³¼ ê³µê²©ë ¥ ì´ˆê¸°í™” ë©”ì„œë“œ
 void Character::UpdateLevelStats() {
-    MaxUp(); //LevelUp()½Ã °æÇèÄ¡ max ÃÊ±âÈ­ ¸Ş¼­µå > ¿À·ù¾È³ª°ÙÁö?..
-    ChHP = MaxHP + (ChLevel * 20);          // **Ã¼·Â**: `(ÇöÀç Ã¼·Â + (·¹º§ ¡¿ 20))
-    MaxHP = ChHP;                           // **°ø°İ·Â**: `(ÇöÀç °ø°İ·Â + (·¹º§ ¡¿ 5))
-    ChAttack = ChAttack + (ChLevel * 5);    // ·¹º§¾÷ ½Ã Ã¼·ÂÀº ÃÖ´ëÄ¡±îÁö ¿ÏÀüÈ÷ È¸º¹!
+	MaxUp(); //LevelUp()ì‹œ ê²½í—˜ì¹˜ max ì´ˆê¸°í™” ë©”ì„œë“œ > ì˜¤ë¥˜ì•ˆë‚˜ê²Ÿì§€?..
+	ChHP = MaxHP + (ChLevel * 20);          // **ì²´ë ¥**: `(í˜„ì¬ ì²´ë ¥ + (ë ˆë²¨ Ã— 20))
+	MaxHP = ChHP;                           // **ê³µê²©ë ¥**: `(í˜„ì¬ ê³µê²©ë ¥ + (ë ˆë²¨ Ã— 5))
+	ChAttack = ChAttack + (ChLevel * 5);    // ë ˆë²¨ì—… ì‹œ ì²´ë ¥ì€ ìµœëŒ€ì¹˜ê¹Œì§€ ì™„ì „íˆ íšŒë³µ!
 }
 
-//Ã¼·Â º¯µ¿ ¸Ş¼­µå
+//ì²´ë ¥ ë³€ë™ ë©”ì„œë“œ
 void Character::ChHPUpDown(int changeHP) {
-    ChHP += changeHP;
-    if (ChHP <= 0) { ChHP = 0; }
+	ChHP += changeHP;
+	if (ChHP <= 0) { ChHP = 0; }
 }
 
-//°ø°İ·Â º¯µ¿ ¸Ş¼­µå
+//ê³µê²©ë ¥ ë³€ë™ ë©”ì„œë“œ
 void Character::ChAttackUpDown(int changeAt) {
-    ChAttack += changeAt;
+	ChAttack += changeAt;
 }
 
-//Ä³¸¯ÅÍ ÀÌ¸§ ¹İÈ¯ ¸Ş¼­µå
+//ìºë¦­í„° ì´ë¦„ ë°˜í™˜ ë©”ì„œë“œ
 std::string Character::GetChName() {
-    return ChName;
+	return ChName;
 }
 
-//¼ÒÁö±İ ¹İÈ¯ ¸Ş¼­µå
+//ì†Œì§€ê¸ˆ ë°˜í™˜ ë©”ì„œë“œ
 long long Character::GetGold() {
-    return ChGold;
+	return ChGold;
 }
 
-//¼ÒÁö±İ Ãß°¡/°¨¼Ò ¸Ş¼­µå
+//ì†Œì§€ê¸ˆ ì¶”ê°€/ê°ì†Œ ë©”ì„œë“œ
 void Character::SetGold(long long a) {
-    ChGold += a;
+	ChGold += a;
 }
 
-//ÇöÀç Ä³¸¯ÅÍ »óÅÂ È®ÀÎ ¸Ş¼­µå
+//í˜„ì¬ ìºë¦­í„° ìƒíƒœ í™•ì¸ ë©”ì„œë“œ
 void Character::NowCharacter() {
-    std::cout << "\n[ÇöÀç »óÅÂ]" << std::endl;
-    std::cout << "ÀÌ¸§ : " << ChName << std::endl;
-    std::cout << "·¹º§ : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
-    std::cout << "¼ÒÁö±İ : " << ChGold << "G" << std::endl;
+	std::cout << "\n[í˜„ì¬ ìƒíƒœ]" << std::endl;
+	std::cout << "ì´ë¦„ : " << ChName << std::endl;
+	std::cout << "ë ˆë²¨ : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
+	std::cout << "ì†Œì§€ê¸ˆ : " << ChGold << "G" << std::endl;
 }
 
-//Ä³¸¯ÅÍ ·¹º§ ¹İÈ¯ ¸Ş¼­µå
+//ìºë¦­í„° ë ˆë²¨ ë°˜í™˜ ë©”ì„œë“œ
 int Character::GetChLevel() {
-    return ChLevel;
+	return ChLevel;
 }
