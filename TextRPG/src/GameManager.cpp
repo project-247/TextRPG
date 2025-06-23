@@ -92,8 +92,3 @@ void GameManager::StartBattle() {
 		battle();  // 일반 몬스터 전투
 	}
 }
-
-// 보스전 따로 호출할 때 (현재는 사실상 안 쓰이지만 대비용으로 남겨둠)
-void GameManager::StartBossBattle() {
-	bossBattle();
-}
