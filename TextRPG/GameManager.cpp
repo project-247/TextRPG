@@ -39,9 +39,6 @@ void GameManager::CreateCharacter() {
 
 	Character* character = Character::NewCharacter(); // 싱글톤 방식 캐릭터 생성
 	Image images;
-	images.Church();    // 배경 이미지 출력 (장식용)
-	images.Triforce();
-	images.Cat();
 
 	while (true) {
 		cout << "당신의 이름을 입력하세요: ";
@@ -61,8 +58,9 @@ void GameManager::CreateCharacter() {
 // 직업 선택 시스템
 void GameManager::SelectJob() {
 	int input, input2;
+	Character* character = Character::NewCharacter(); // 싱글톤 방식 캐릭터 생성
 
-	while (ClassNumber == 0) {  // 직업 미선택 상태일 때 반복
+	while (character->GetJob() == "무직") {  // 직업 미선택 상태일 때 반복
 		cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직\n선택: ";
 		cin >> input;
 
@@ -70,7 +68,7 @@ void GameManager::SelectJob() {
 			cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
 			cin >> input2;
 			if (input2 == 1) {
-				CreateJob(input);  // 직업 생성
+				CreateJob(input, character);  // 직업 생성
 				break;
 			}
 		}
