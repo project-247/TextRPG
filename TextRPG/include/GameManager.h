@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-#pragma once
 #include "Character.h"
 #include "Monster.h"
 #include "Job.h"

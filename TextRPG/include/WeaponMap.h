@@ -1,45 +1,45 @@
-#pragma once
-
-#include <map>
-#include <vector>
-#include <string>
-#include "Item.h"
-
-class WeaponMap {
-public:
-    // Á÷¾÷º° ¹«±â µ¥ÀÌÅÍ (¹«Á÷ Á¦¿Ü)
-    static const std::map<std::string, std::vector<Item>>& getWeaponData() {
-        static std::map<std::string, std::vector<Item>> weaponMap = {
-            { "Àü»ç", {
-                Item("³ì½¼ °Ë", ItemType::WEAPON, 10),
-                Item("°­Ã¶°Ë", ItemType::WEAPON, 30),
-                Item("¹ö±×°Ë", ItemType::WEAPON, 50)
-            }},
-            { "µµÀû", {
-                Item("³ì½¼ ´Ü°Ë", ItemType::WEAPON, 10),
-                Item("´Ü°Ë", ItemType::WEAPON, 20),
-                Item("µğ¹ö±ë´Ü°Ë", ItemType::WEAPON, 40)
-            }},
-            { "±Ã¼ö", {
-                Item("³ª¹« È°", ItemType::WEAPON, 10),
-                Item("È°", ItemType::WEAPON, 25),
-                Item("Çì´õÈ­»ì", ItemType::WEAPON, 45)
-            }},
-        };
-        return weaponMap;
-    }
-
-    // ¹«Á÷¿ë ¹«±â´Â ¸ğµç Á÷¾÷ ¹«±â¸¦ ÇÕÃÄ¼­ ¾ò´Â ÇÔ¼ö (Æ÷¼Ç, ½ºÅ©·Ñ Á¦¿Ü)
-    static std::vector<Item> getAllWeaponsForNoJob() {
-        const auto& weaponMap = getWeaponData();
-        std::vector<Item> allWeapons;
-        for (const auto& pair : weaponMap) {
-            allWeapons.insert(allWeapons.end(), pair.second.begin(), pair.second.end());
-        }
-        // ¹«Á÷ ¹«±â ¿¹½Ã ¾ÆÀÌÅÛµµ Ãß°¡ °¡´É
-        allWeapons.push_back(Item("¸·´ë±â", ItemType::WEAPON, 10));
-        allWeapons.push_back(Item("¹æ¸ÁÀÌ", ItemType::WEAPON, 35));
-        return allWeapons;
-    }
-};
-
+ï»¿//#pragma once
+//
+//#include <map>
+//#include <vector>
+//#include <string>
+//#include "Item.h"
+//
+//class WeaponMap {
+//public:
+//    // ì§ì—…ë³„ ë¬´ê¸° ë°ì´í„° (ë¬´ì§ ì œì™¸)
+//    static const std::map<std::string, std::vector<Item>>& getWeaponData() {
+//        static std::map<std::string, std::vector<Item>> weaponMap = {
+//            { "ì „ì‚¬", {
+//                Item("ë…¹ìŠ¨ ê²€", ItemType::WEAPON, 10),
+//                Item("ê°•ì² ê²€", ItemType::WEAPON, 30),
+//                Item("ë²„ê·¸ê²€", ItemType::WEAPON, 50)
+//            }},
+//            { "ë„ì ", {
+//                Item("ë…¹ìŠ¨ ë‹¨ê²€", ItemType::WEAPON, 10),
+//                Item("ë‹¨ê²€", ItemType::WEAPON, 20),
+//                Item("ë””ë²„ê¹…ë‹¨ê²€", ItemType::WEAPON, 40)
+//            }},
+//            { "ê¶ìˆ˜", {
+//                Item("ë‚˜ë¬´ í™œ", ItemType::WEAPON, 10),
+//                Item("í™œ", ItemType::WEAPON, 25),
+//                Item("í—¤ë”í™”ì‚´", ItemType::WEAPON, 45)
+//            }},
+//        };
+//        return weaponMap;
+//    }
+//
+//    // ë¬´ì§ìš© ë¬´ê¸°ëŠ” ëª¨ë“  ì§ì—… ë¬´ê¸°ë¥¼ í•©ì³ì„œ ì–»ëŠ” í•¨ìˆ˜ (í¬ì…˜, ìŠ¤í¬ë¡¤ ì œì™¸)
+//    static std::vector<Item> getAllWeaponsForNoJob() {
+//        const auto& weaponMap = getWeaponData();
+//        std::vector<Item> allWeapons;
+//        for (const auto& pair : weaponMap) {
+//            allWeapons.insert(allWeapons.end(), pair.second.begin(), pair.second.end());
+//        }
+//        // ë¬´ì§ ë¬´ê¸° ì˜ˆì‹œ ì•„ì´í…œë„ ì¶”ê°€ ê°€ëŠ¥
+//        allWeapons.push_back(Item("ë§‰ëŒ€ê¸°", ItemType::WEAPON, 10));
+//        allWeapons.push_back(Item("ë°©ë§ì´", ItemType::WEAPON, 35));
+//        return allWeapons;
+//    }
+//};
+//
