@@ -6,7 +6,7 @@ using namespace std;
 // GameManager 생성자
 GameManager::GameManager() {}
 
-// 전역 함수: 이름 입력 유효성 검사
+// 이름 입력 유효성 검사
 string getValidName() {
 	string input;
 	while (true) {
