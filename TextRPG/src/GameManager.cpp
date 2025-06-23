@@ -1,66 +1,88 @@
 ﻿#include "GameManager.h"
 #include <iostream>
 #include <limits>
-
 using namespace std;
 
-// GameManager 생성자 (생성할 때 특별히 초기화할 내용 없음)
+// GameManager 생성자
 GameManager::GameManager() {}
 
-// 게임 전체 시작 흐름 관리
-void GameManager::StartGame() {
-	CreateCharacter();  // 캐릭터 생성
-	SelectJob();        // 직업 선택
-	ShowCharacterStatus(); // 캐릭터 상태 확인
+// 전역 함수: 이름 입력 유효성 검사
+string getValidName() {
+	string input;
+	while (true) {
+		cout << "캐릭터 이름을 입력하세요: ";
+		getline(cin, input);
 
-	// 메인 게임 루프: 메뉴 선택 반복
+		string blank = "";
+		for (int i = 0; i < input.length(); i++) {
+			if (input[i] != ' ') {
+				blank += input[i];
+			}
+		}
+
+		if (blank == "") {
+			cout << "[에러] 이름은 공백일 수 없습니다. 다시 입력해주세요.\n";
+		}
+		else {
+			break;
+		}
+	}
+	return input;
+}
+
+// 게임 시작 (메인 흐름 제어)
+void GameManager::StartGame() {
+	CreateCharacter();
+	SelectJob();
+	ShowCharacterStatus();
+
 	while (true) {
 		cout << "\n=== 메뉴 ===\n1. 전투 시작\n2. 상태 확인\n3. 종료\n선택: ";
 		int menu;
 		cin >> menu;
 
 		if (menu == 1) {
-			StartBattle();  // 전투 시작
+			StartBattle();
 		}
 		else if (menu == 2) {
-			ShowCharacterStatus();  // 현재 캐릭터 상태 출력
+			ShowCharacterStatus();
 		}
 		else if (menu == 3) {
 			cout << "게임 종료" << endl;
-			break;  // 프로그램 종료
-		}
-	}
-}
-
-// 캐릭터 생성 (이름 입력 받기)
-void GameManager::CreateCharacter() {
-	string name;
-	int input;
-
-	Character* character = Character::NewCharacter(); // 싱글톤 방식 캐릭터 생성
-	Image images;
-
-	while (true) {
-		cout << "당신의 이름을 입력하세요: ";
-		cin.ignore();   // 버퍼 초기화 (cin과 getline 혼용시 필수)
-		getline(cin, name);
-		cout << name << " 맞습니까? (1. 예 / 2. 아니오): ";
-		cin >> input;
-
-		if (input == 1) {
-			character->SetChName(name);  // 이름 저장
-			cout << "환영합니다, " << character->GetChName() << "님!" << endl;
 			break;
 		}
 	}
 }
 
-// 직업 선택 시스템
+// 캐릭터 생성
+void GameManager::CreateCharacter() {
+	int input;
+	Character* character = Character::NewCharacter();
+
+	string name = getValidName();
+
+	while (true) {
+		cout << name << " 맞습니까? (1. 예 / 2. 아니오): ";
+		cin >> input;
+
+		if (input == 1) {
+			character->SetChName(name);
+			cout << "환영합니다, " << character->GetChName() << "님!" << endl;
+
+			cout << "초기 상태 → 레벨: " << character->GetChLevel()
+				<< ", 체력: " << character->GetChHP()
+				<< ", 공격력: " << character->GetChAttack() << endl;
+			break;
+		}
+	}
+}
+
+// 직업 선택
 void GameManager::SelectJob() {
 	int input, input2;
-	Character* character = Character::NewCharacter(); // 싱글톤 방식 캐릭터 생성
+	Character* character = Character::NewCharacter();
 
-	while (character->GetJob() == "무직") {  // 직업 미선택 상태일 때 반복
+	while (character->GetJob() == "무직") {
 		cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직\n선택: ";
 		cin >> input;
 
@@ -68,27 +90,27 @@ void GameManager::SelectJob() {
 			cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
 			cin >> input2;
 			if (input2 == 1) {
-				CreateJob(input, character);  // 직업 생성
+				CreateJob(input, character);
 				break;
 			}
 		}
 	}
 }
 
-// 현재 캐릭터 상태 출력
+// 캐릭터 상태 출력
 void GameManager::ShowCharacterStatus() {
 	NowUser nowUser;
 	nowUser.ReturnUser();
 }
 
-// 전투 시작: 일반전투 or 보스전 자동 판별
+// 전투 시작
 void GameManager::StartBattle() {
 	Character* player = Character::NewCharacter();
 
 	if (player->GetChLevel() >= 10) {
-		bossBattle();  // 레벨 10 이상 → 보스전 진입
+		bossBattle();
 	}
 	else {
-		battle();  // 일반 몬스터 전투
+		battle();
 	}
 }

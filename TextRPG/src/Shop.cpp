@@ -1,72 +1,72 @@
-#include "Shop.h"
-#include "Character.h"
-#include <iostream>
-
+ï»¿//#include "Shop.h"
+//#include "Character.h"
+//#include <iostream>
+//
 //Shop::Shop() {
-//    // »óÁ¡¿¡ ÆÇ¸ÅÇÒ ¾ÆÀÌÅÛ ¹Ì¸® µî·Ï
-//    stock.emplace_back("Ä¡À¯ ¹°¾à", ItemType::HEAL, 50);
-//    stock.emplace_back("°ø°İÀÇ ¹İÁö", ItemType::BOOST, 10);
-//    stock.emplace_back("È²±İ µ¿Àü ´õ¹Ì", ItemType::GOLD, 100);
+//	// ìƒì ì— íŒë§¤í•  ì•„ì´í…œ ë¯¸ë¦¬ ë“±ë¡
+//	stock.emplace_back("ì¹˜ìœ  ë¬¼ì•½", ItemType::HEAL, 50);
+//	stock.emplace_back("ê³µê²©ì˜ ë°˜ì§€", ItemType::BOOST, 10);
+//	stock.emplace_back("í™©ê¸ˆ ë™ì „ ë”ë¯¸", ItemType::GOLD, 100);
 //}
 //
 //void Shop::showMenu() {
-//    int choice;
+//	int choice;
 //
-//    Character* player = Character::NewCharacter();
-//    Inventory playerInventory;  // Àü´Ş¹ŞÀ» ¼öµµ ÀÖÀ½ (Áö±İÀº ¿¹½Ã·Î »ı¼º)
+//	Character* player = Character::NewCharacter();
+//	Inventory playerInventory;  // ì „ë‹¬ë°›ì„ ìˆ˜ë„ ìˆìŒ (ì§€ê¸ˆì€ ì˜ˆì‹œë¡œ ìƒì„±)
 //
-//    while (true) {
-//        std::cout << "\n===== ?? »óÁ¡ =====\n";
-//        std::cout << "1. ¾ÆÀÌÅÛ º¸±â\n";
-//        std::cout << "2. ¾ÆÀÌÅÛ ±¸¸Å\n";
-//        std::cout << "3. ³ª°¡±â\n";
-//        std::cout << "¼±ÅÃ: ";
-//        std::cin >> choice;
+//	while (true) {
+//		std::cout << "\n===== ?? ìƒì  =====\n";
+//		std::cout << "1. ì•„ì´í…œ ë³´ê¸°\n";
+//		std::cout << "2. ì•„ì´í…œ êµ¬ë§¤\n";
+//		std::cout << "3. ë‚˜ê°€ê¸°\n";
+//		std::cout << "ì„ íƒ: ";
+//		std::cin >> choice;
 //
-//        if (choice == 1) {
-//            showItems();
-//        }
-//        else if (choice == 2) {
-//            showItems();
-//            std::cout << "±¸¸ÅÇÒ ¾ÆÀÌÅÛ ¹øÈ£ ÀÔ·Â: ";
-//            int index;
-//            std::cin >> index;
-//            buyItem(index, playerInventory);
-//        }
-//        else if (choice == 3) {
-//            std::cout << "»óÁ¡À» ³ª°©´Ï´Ù.\n";
-//            break;
-//        }
-//        else {
-//            std::cout << "Àß¸øµÈ ÀÔ·ÂÀÔ´Ï´Ù.\n";
-//        }
-//    }
+//		if (choice == 1) {
+//			showItems();
+//		}
+//		else if (choice == 2) {
+//			showItems();
+//			std::cout << "êµ¬ë§¤í•  ì•„ì´í…œ ë²ˆí˜¸ ì…ë ¥: ";
+//			int index;
+//			std::cin >> index;
+//			buyItem(index, playerInventory);
+//		}
+//		else if (choice == 3) {
+//			std::cout << "ìƒì ì„ ë‚˜ê°‘ë‹ˆë‹¤.\n";
+//			break;
+//		}
+//		else {
+//			std::cout << "ì˜ëª»ëœ ì…ë ¥ì…ë‹ˆë‹¤.\n";
+//		}
+//	}
 //}
 //
 //void Shop::showItems() {
-//    std::cout << "\n[ÆÇ¸Å ¸ñ·Ï]\n";
-//    for (size_t i = 0; i < stock.size(); ++i) {
-//        std::cout << i + 1 << ". " << stock[i].getName() << " - °¡°İ: " << stock[i].getValue() << "G\n";
-//    }
+//	std::cout << "\n[íŒë§¤ ëª©ë¡]\n";
+//	for (size_t i = 0; i < stock.size(); ++i) {
+//		std::cout << i + 1 << ". " << stock[i].getName() << " - ê°€ê²©: " << stock[i].getValue() << "G\n";
+//	}
 //}
 //
 //void Shop::buyItem(int index, Inventory& inventory) {
-//    Character* player = Character::newCharacter();
+//	Character* player = Character::newCharacter();
 //
-//    if (index < 1 || index >(int)stock.size()) {
-//        std::cout << "Àß¸øµÈ ¹øÈ£ÀÔ´Ï´Ù.\n";
-//        return;
-//    }
+//	if (index < 1 || index >(int)stock.size()) {
+//		std::cout << "ì˜ëª»ëœ ë²ˆí˜¸ì…ë‹ˆë‹¤.\n";
+//		return;
+//	}
 //
-//    Item item = stock[index - 1];
-//    long long price = item.getValue();
+//	Item item = stock[index - 1];
+//	long long price = item.getValue();
 //
-//    if (player->GetGold() < price) {
-//        std::cout << "¼ÒÁö±İÀÌ ºÎÁ·ÇÕ´Ï´Ù!\n";
-//        return;
-//    }
+//	if (player->GetGold() < price) {
+//		std::cout << "ì†Œì§€ê¸ˆì´ ë¶€ì¡±í•©ë‹ˆë‹¤!\n";
+//		return;
+//	}
 //
-//    player->SetGold(-price);  // °ñµå Â÷°¨
-//    inventory.addItem(item);  // ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛ Ãß°¡
-//    std::cout << item.getName() << "À»(¸¦) ±¸¸ÅÇß½À´Ï´Ù!\n";
+//	player->SetGold(-price);  // ê³¨ë“œ ì°¨ê°
+//	inventory.addItem(item);  // ì¸ë²¤í† ë¦¬ì— ì•„ì´í…œ ì¶”ê°€
+//	std::cout << item.getName() << "ì„(ë¥¼) êµ¬ë§¤í–ˆìŠµë‹ˆë‹¤!\n";
 //}
