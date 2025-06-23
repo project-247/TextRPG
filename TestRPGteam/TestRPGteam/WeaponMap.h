@@ -11,14 +11,17 @@ public:
     static const std::map<std::string, std::vector<Item>>& getWeaponData() {
         static std::map<std::string, std::vector<Item>> weaponMap = {
             { "Àü»ç", {
+                Item("³ì½¼ °Ë", ItemType::WEAPON, 10),
                 Item("°­Ã¶°Ë", ItemType::WEAPON, 30),
                 Item("¹ö±×°Ë", ItemType::WEAPON, 50)
             }},
             { "µµÀû", {
+                Item("³ì½¼ ´Ü°Ë", ItemType::WEAPON, 10),
                 Item("´Ü°Ë", ItemType::WEAPON, 20),
                 Item("µð¹ö±ë´Ü°Ë", ItemType::WEAPON, 40)
             }},
             { "±Ã¼ö", {
+                Item("³ª¹« È°", ItemType::WEAPON, 10),
                 Item("È°", ItemType::WEAPON, 25),
                 Item("Çì´õÈ­»ì", ItemType::WEAPON, 45)
             }},

@@ -3,15 +3,17 @@
 #include <vector>
 #include "Item.h"
 
-//성신님감사합니다 이 코드는 이제 제 겁니다
-
 class Inventory {
 private:
-    //std::vector<Item> Items;
+    //
+    std::vector<Item> UserItems;
 
 public:
     Inventory(){}
-    void AddUserItem(const Item& item);
+    //입력 : item 객체 + 직업 번호
+    void AddUserItem(const Item& item, int classNum);
     void ShowUserItems();
     void UseItem(int index);
+    //무기가 캐릭터 직업과 일치하는지 확인하는 메서드
+    bool IdentifyItem(const Item& item, int classNum);
 };
