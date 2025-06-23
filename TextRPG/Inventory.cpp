@@ -1,45 +1,45 @@
-#pragma once
-#include "Inventory.h"
-#include "WeaponMap.h"
-#include <iostream>
-
-//WeaponMap WP_Map;
-//std::map<std::string, std::vector<Item>> weaponMap;
-//weaponMap=WP_Map.getWeaponData();
-
-bool Inventory::IdentifyItem(const Item& item, int classNum) {
-    //classNum(Á÷¾÷ enum)°ú ItemMap Á÷¾÷°ú ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎ
-
-    return true;//Á÷¾÷°ú ºÒÀÏÄ¡ÇÏ¸é True ÀÏÄ¡ÇÏ¸é False
-}
-
-void Inventory::AddUserItem(const Item& item, int classNum) {
-    //item Á¾·ù°¡ WeaponÀÌ°í Á÷¾÷°ú ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎÇÏ±â
-    if(3==static_cast<int>(item.getType()) && IdentifyItem(item, classNum)) {
-        std::cout << "Á÷¾÷ÀÌ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù."<<std::endl;
-    }
-    UserItems.push_back(item);
-    std::cout << item.getName() << "ÀÌ(°¡) ÀÎº¥Åä¸®¿¡ Ãß°¡µÇ¾ú½À´Ï´Ù.\n";
-}
-
-void Inventory::ShowUserItems() {
-    if (UserItems.empty()) {
-        std::cout << "ÀÎº¥Åä¸®°¡ ºñ¾î ÀÖ½À´Ï´Ù.\n";
-        return;
-    }
-
-    std::cout << "\n[ÀÎº¥Åä¸® ¸ñ·Ï]\n";
-    for (size_t i = 0; i < UserItems.size(); ++i) {
-        std::cout << i + 1 << ". " << UserItems[i].getName() << "\n";
-    }
-}
-
-void Inventory::UseItem(int index) {
-    if (index < 1 || index >(int)UserItems.size()) {
-        std::cout << "Àß¸øµÈ ÀÎµ¦½ºÀÔ´Ï´Ù.\n";
-        return;
-    }
-
-    UserItems[index - 1].use();
-    UserItems.erase(UserItems.begin() + (index - 1));
-}
+ï»¿//#pragma once
+//#include "Inventory.h"
+//#include "WeaponMap.h"
+//#include <iostream>
+//
+////WeaponMap WP_Map;
+////std::map<std::string, std::vector<Item>> weaponMap;
+////weaponMap=WP_Map.getWeaponData();
+//
+//bool Inventory::IdentifyItem(const Item& item, int classNum) {
+//    //classNum(ì§ì—… enum)ê³¼ ItemMap ì§ì—…ê³¼ ì¼ì¹˜í•˜ëŠ”ì§€ í™•ì¸
+//
+//    return true;//ì§ì—…ê³¼ ë¶ˆì¼ì¹˜í•˜ë©´ True ì¼ì¹˜í•˜ë©´ False
+//}
+//
+//void Inventory::AddUserItem(const Item& item, int classNum) {
+//    //item ì¢…ë¥˜ê°€ Weaponì´ê³  ì§ì—…ê³¼ ì¼ì¹˜í•˜ëŠ”ì§€ í™•ì¸í•˜ê¸°
+//    if(3==static_cast<int>(item.getType()) && IdentifyItem(item, classNum)) {
+//        std::cout << "ì§ì—…ì´ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤."<<std::endl;
+//    }
+//    UserItems.push_back(item);
+//    std::cout << item.getName() << "ì´(ê°€) ì¸ë²¤í† ë¦¬ì— ì¶”ê°€ë˜ì—ˆìŠµë‹ˆë‹¤.\n";
+//}
+//
+//void Inventory::ShowUserItems() {
+//    if (UserItems.empty()) {
+//        std::cout << "ì¸ë²¤í† ë¦¬ê°€ ë¹„ì–´ ìˆìŠµë‹ˆë‹¤.\n";
+//        return;
+//    }
+//
+//    std::cout << "\n[ì¸ë²¤í† ë¦¬ ëª©ë¡]\n";
+//    for (size_t i = 0; i < UserItems.size(); ++i) {
+//        std::cout << i + 1 << ". " << UserItems[i].getName() << "\n";
+//    }
+//}
+//
+//void Inventory::UseItem(int index) {
+//    if (index < 1 || index >(int)UserItems.size()) {
+//        std::cout << "ì˜ëª»ëœ ì¸ë±ìŠ¤ì…ë‹ˆë‹¤.\n";
+//        return;
+//    }
+//
+//    UserItems[index - 1].use();
+//    UserItems.erase(UserItems.begin() + (index - 1));
+//}

@@ -139,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="battle.h" />
     <ClInclude Include="Character.h" />
+    <ClInclude Include="GameManager.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />

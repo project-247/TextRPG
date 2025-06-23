@@ -1,11 +1,11 @@
-#include "Item.h"
-#include "Character.h"
-#include "WeaponMap.h"
-#include <iostream>
-
-Item::Item(std::string name, ItemType type, int value)
-    : name(std::move(name)), type(type), value(value) {
-}
+ï»¿//#include "Item.h"
+//#include "Character.h"
+//#include "WeaponMap.h"
+//#include <iostream>
+//
+//Item::Item(std::string name, ItemType type, int value)
+//    : name(std::move(name)), type(type), value(value) {
+//}
 
 //std::string Item::getName() const { return name; }
 //ItemType Item::getType() const { return type; }
@@ -13,24 +13,24 @@ Item::Item(std::string name, ItemType type, int value)
 //
 //void Item::use(Character* player) {
 //    if (!player) {
-//        std::cerr << "Error: ¾ÆÀÌÅÛ »ç¿ë ½Ã À¯È¿ÇÑ Ä³¸¯ÅÍ °´Ã¼°¡ ÇÊ¿äÇÕ´Ï´Ù.\n";
+//        std::cerr << "Error: ì•„ì´í…œ ì‚¬ìš© ì‹œ ìœ íš¨í•œ ìºë¦­í„° ê°ì²´ê°€ í•„ìš”í•©ë‹ˆë‹¤.\n";
 //        return;
 //    }
 //
 //    switch (type) {
 //    case ItemType::HEAL:
-//        std::cout << name << " »ç¿ë! Ã¼·Â È¸º¹ " << value << " (·£´ý Æ÷ÇÔ)\n";
+//        std::cout << name << " ì‚¬ìš©! ì²´ë ¥ íšŒë³µ " << value << " (ëžœë¤ í¬í•¨)\n";
 //        player->heal(value);
 //        break;
 //
 //    case ItemType::BOOST:
-//        std::cout << name << " »ç¿ë! °ø°Ý·Â + " << value << "\n";
+//        std::cout << name << " ì‚¬ìš©! ê³µê²©ë ¥ + " << value << "\n";
 //        player->boostAttack(value);
 //        break;
 //
 //    case ItemType::GOLD:
 //        player->addGold(value);
-//        std::cout << "°ñµå È¹µæ: " << value << "G\n";
+//        std::cout << "ê³¨ë“œ íšë“: " << value << "G\n";
 //        break;
 //
 //    case ItemType::WEAPON: {
@@ -38,12 +38,12 @@ Item::Item(std::string name, ItemType type, int value)
 //        std::string job = player->getJob();
 //
 //        bool found = false;
-//        if (job == "¹«Á÷") {
+//        if (job == "ë¬´ì§") {
 //            auto allWeapons = WeaponMap::getAllWeaponsForNoJob();
 //            for (const auto& weapon : allWeapons) {
 //                if (weapon.getName() == name) {
 //                    player->equipWeapon(weapon);
-//                    std::cout << name << " ¹«±â ÀåÂø ¿Ï·á! (°ø°Ý·Â +" << weapon.getValue() << ")\n";
+//                    std::cout << name << " ë¬´ê¸° ìž¥ì°© ì™„ë£Œ! (ê³µê²©ë ¥ +" << weapon.getValue() << ")\n";
 //                    found = true;
 //                    break;
 //                }
@@ -54,7 +54,7 @@ Item::Item(std::string name, ItemType type, int value)
 //                for (const auto& weapon : weaponData[job]) {
 //                    if (weapon.getName() == name) {
 //                        player->equipWeapon(weapon);
-//                        std::cout << name << " ¹«±â ÀåÂø ¿Ï·á! (°ø°Ý·Â +" << weapon.getValue() << ")\n";
+//                        std::cout << name << " ë¬´ê¸° ìž¥ì°© ì™„ë£Œ! (ê³µê²©ë ¥ +" << weapon.getValue() << ")\n";
 //                        found = true;
 //                        break;
 //                    }
@@ -63,7 +63,7 @@ Item::Item(std::string name, ItemType type, int value)
 //        }
 //
 //        if (!found) {
-//            std::cout << name << "Àº(´Â) Á÷¾÷ " << job << " ¹«±â ¸ñ·Ï¿¡ ¾ø½À´Ï´Ù.\n";
+//            std::cout << name << "ì€(ëŠ”) ì§ì—… " << job << " ë¬´ê¸° ëª©ë¡ì— ì—†ìŠµë‹ˆë‹¤.\n";
 //        }
 //        break;
 //    }

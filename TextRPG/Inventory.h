@@ -1,19 +1,19 @@
-#pragma once
-
-#include <vector>
-#include "Item.h"
-
-class Inventory {
-private:
-    //
-    std::vector<Item> UserItems;
-
-public:
-    Inventory(){}
-    //ÀÔ·Â : item °´Ã¼ + Á÷¾÷ ¹øÈ£
-    void AddUserItem(const Item& item, int classNum);
-    void ShowUserItems();
-    void UseItem(int index);
-    //¹«±â°¡ Ä³¸¯ÅÍ Á÷¾÷°ú ÀÏÄ¡ÇÏ´ÂÁö È®ÀÎÇÏ´Â ¸Ş¼­µå
-    bool IdentifyItem(const Item& item, int classNum);
-};
+ï»¿//#pragma once
+//
+//#include <vector>
+//#include "Item.h"
+//
+//class Inventory {
+//private:
+//    //
+//    std::vector<Item> UserItems;
+//
+//public:
+//    Inventory(){}
+//    //ì…ë ¥ : item ê°ì²´ + ì§ì—… ë²ˆí˜¸
+//    void AddUserItem(const Item& item, int classNum);
+//    void ShowUserItems();
+//    void UseItem(int index);
+//    //ë¬´ê¸°ê°€ ìºë¦­í„° ì§ì—…ê³¼ ì¼ì¹˜í•˜ëŠ”ì§€ í™•ì¸í•˜ëŠ” ë©”ì„œë“œ
+//    bool IdentifyItem(const Item& item, int classNum);
+//};
