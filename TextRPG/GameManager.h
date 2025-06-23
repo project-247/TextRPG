@@ -9,7 +9,7 @@
 #include "Inventory.h"
 #include "Item.h"
 #include "Shop.h"
-#include "battle.h"  // <-- 전투 시스템 연결
+#include "battle.h" 
 
 class GameManager {
 public:
