@@ -1,20 +1,25 @@
 ﻿#pragma once
 
-#include <string>
+#pragma once
+#include "Character.h"
 #include "Monster.h"
+#include "Job.h"
+#include "NowUser.h"
+#include "Image.h"
+#include "Inventory.h"
+#include "Item.h"
+#include "Shop.h"
+#include "battle.h"  // <-- 전투 시스템 연결
 
 class GameManager {
 public:
 	GameManager();
-	void StartGame();             // 전체 게임 시작
-	void CreateCharacter();       // 캐릭터 생성 (이름 입력)
-	void SelectJob();             // 직업 선택
-	void ShowCharacterStatus();   // 캐릭터 상태 확인
-	void StartBattle();           // 일반 몬스터 전투
-	void StartBossBattle();       // 보스 몬스터 전투
+	void StartGame();
 
 private:
-	Monster* GenerateMonster();   // 몬스터 생성 함수
-	Monster* GenerateBossMonster();
-
+	void CreateCharacter();
+	void SelectJob();
+	void ShowCharacterStatus();
+	void StartBattle();
+	void StartBossBattle();
 };

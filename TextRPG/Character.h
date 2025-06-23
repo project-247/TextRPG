@@ -22,6 +22,10 @@ private:
 public:
 	int ChHP = 200;             //캐릭터 체력. setHP()로 설정. getHP()로 반환
 	int ChAttack = 30;         //캐릭터 공격력. setAttack()로 설정. getAttack()로 반환
+
+	int GetChAttack();
+	int GetChHP();
+
 	//복사 생성자 delete
 	Character(const Character&) = delete;
 	//대입 생성자 delete

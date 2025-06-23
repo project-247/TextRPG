@@ -98,3 +98,11 @@ void Character::NowCharacter() {
 int Character::GetChLevel() {
 	return ChLevel;
 }
+
+int Character::GetChAttack() {
+	return ChAttack;
+}
+
+int Character::GetChHP() {
+	return ChHP;
+}

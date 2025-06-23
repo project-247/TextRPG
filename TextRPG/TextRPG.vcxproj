@@ -146,6 +146,7 @@
     <ClInclude Include="Job.h" />
     <ClInclude Include="monster.h" />
     <ClInclude Include="MS_Bencie.h" />
+    <ClInclude Include="MS_BossDragon.h" />
     <ClInclude Include="MS_Golem.h" />
     <ClInclude Include="MS_Mimic.h" />
     <ClInclude Include="MS_Slime.h" />
