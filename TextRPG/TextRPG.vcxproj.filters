@@ -15,90 +15,90 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\GameManager.cpp">
+    <ClCompile Include="TextRPG.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Image.cpp">
+    <ClCompile Include="GameManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Inventory.cpp">
+    <ClCompile Include="Character.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Item.cpp">
+    <ClCompile Include="Image.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Job.cpp">
+    <ClCompile Include="Weapon.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Monster.cpp">
+    <ClCompile Include="Inventory.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\NowUser.cpp">
+    <ClCompile Include="Item.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Shop.cpp">
+    <ClCompile Include="Job.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\TextRPG.cpp">
+    <ClCompile Include="Monster.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Weapon.cpp">
+    <ClCompile Include="NowUser.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\battle.cpp">
+    <ClCompile Include="Shop.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="src\Character.cpp">
+    <ClCompile Include="battle.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="monsters\MS_Bencie.h">
+    <ClInclude Include="Character.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="monsters\MS_BossDragon.h">
+    <ClInclude Include="battle.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="monsters\MS_Golem.h">
+    <ClInclude Include="Shop.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="monsters\MS_Mimic.h">
+    <ClInclude Include="WeaponMap.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="monsters\MS_Slime.h">
+    <ClInclude Include="Image.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\GameManager.h">
+    <ClInclude Include="Inventory.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Image.h">
+    <ClInclude Include="Item.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Inventory.h">
+    <ClInclude Include="Job.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Item.h">
+    <ClInclude Include="monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Job.h">
+    <ClInclude Include="MS_Bencie.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\monster.h">
+    <ClInclude Include="MS_Golem.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\NowUser.h">
+    <ClInclude Include="MS_Mimic.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Shop.h">
+    <ClInclude Include="MS_Slime.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\WeaponMap.h">
+    <ClInclude Include="NowUser.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\battle.h">
+    <ClInclude Include="GameManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="include\Character.h">
+    <ClInclude Include="MS_BossDragon.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
