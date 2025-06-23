@@ -1,72 +1,72 @@
 ﻿#include <iostream>
-#include <string>
-#include <vector>
+#include <limits>
+#include "Character.h"
+#include "Job.h"
+#include "NowUser.h"
+#include "Image.h"
+#include "Monster.h"
+
 using namespace std;
 
-class Character
-{
-public:
-	string name;
-	int level;
-	int health;
-	int maxHealth;
-	int attack;
-	int experience;
-	int gold;
+// 예외 입력 처리 함수
+void InputReturn() {
+	system("cls");
+	cout << "---------------------------\n";
+	cout << "다시 입력해주세요.\n";
+	cout << "---------------------------\n\n";
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+}
 
-	Character(string inputName)
-	{
-		name = inputName;
-		level = 1;
-		maxHealth = 200;
-		health = maxHealth;
-		attack = 30;
-		experience = 0;
-		gold = 0;
-	}
+int main() {
+	string Name;
+	int Input = 1;
+	int Input2 = 1;
 
-	void displayStatus()
-	{
-		cout << "\n[캐릭터 상태]\n";
-		cout << "이름: " << name << endl;
-		cout << "레벨: " << level << endl;
-		cout << "체력: " << health << " / " << maxHealth << endl;
-		cout << "공격력: " << attack << endl;
-		cout << "경험치: " << experience << " / 100" << endl;
-		cout << "골드: " << gold << endl;
-	}
-};
+	Character* character = Character::NewCharacter();
+	NowUser* nowUserStatus = new NowUser();
+	Image images;
 
-string getValidName()
-{
-	string inputName;
+	images.Church();
+	images.Triforce();
+	images.Cat();
 
+	// 캐릭터 이름 설정
 	while (true) {
-		cout << "캐릭터 이름을 입력하세요: ";
-		getline(cin, inputName);
+		cout << "당신의 이름을 입력하세요 : ";
+		getline(cin, Name);
+		cout << Name << ", 당신의 이름이 맞나요?\n1. 예  2. 아니오" << endl;
+		cin >> Input;
 
-		bool onlySpace = true;
-		for (int i = 0; i < inputName.length(); i++) {
-			if (inputName[i] != ' ') {
-				onlySpace = false;
+		if (Input == 1) {
+			character->SetChName(Name);
+			cin.ignore();
+			system("cls");
+			cout << "환영합니다. " << character->GetChName() << "님!" << endl;
+			break;
+		}
+		InputReturn();
+	}
+
+	// 직업 선택
+	while (ClassNumber == 0) {
+		cout << "직업을 선택하세요\n1. 전사  2. 궁수  3. 도적  4. 무직" << endl;
+		cin >> Input;
+
+		if (Input > 0 && Input < 5) {
+			cout << ReturnInputJobName(Input) << "(으)로 선택하시겠습니까? \n1. 예  2. 아니오" << endl;
+			cin >> Input2;
+			if (Input2 == 1) {
+				system("cls");
+				CreateJob(Input);
 				break;
 			}
 		}
-
-		if (inputName == "" || onlySpace) {
-			cout << "[에러] 이름은 공백일 수 없습니다. 다시 입력해주세요.\n";
-		}
-		else {
-			break;
-		}
+		InputReturn();
 	}
-	return inputName;
-}
 
-int main()
-{
-	string name = getValidName();
-	Character player(name);
-	cout << "\n캐릭터 [" << name << "] 생성 완료!\n";
-	player.displayStatus();
+	nowUserStatus->ReturnUser();
+	cout << endl;
+
+	// 추가 게임 시스템은 이후 여기에 이어서 연결하면 됩니다.
 }
