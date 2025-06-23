@@ -92,6 +92,10 @@ void Character::NowCharacter() {
 	std::cout << "이름 : " << ChName << std::endl;
 	std::cout << "레벨 : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
 	std::cout << "소지금 : " << ChGold << "G" << std::endl;
+	std::cout << "직업 : " << JobName << std::endl;
+	showEquippedWeapon();
+	std::cout << "체력 : " << ChHP << std::endl;
+	std::cout << "공격력 : " << ChAttack << std::endl;
 }
 
 //캐릭터 레벨 반환 메서드
@@ -105,4 +109,44 @@ int Character::GetChAttack() {
 
 int Character::GetChHP() {
 	return ChHP;
+}
+
+void Character::SetJob(std::string job) {
+	JobName = job;
+
+	if (job == "전사") {
+		equipWeapon("녹슨 검", 10);
+	}
+	else if (job == "궁수") {
+		equipWeapon("나무활", 8);
+	}
+	else if (job == "도적") {
+		equipWeapon("녹슨 단검", 9);
+	}
+	else {
+		EquippedWeaponName = "";
+		EquippedWeaponAttack = 0;
+	}
+
+	UpdateLevelStats(); // 직업 변경시 스탯 업데이트
+}
+
+std::string Character::GetJob() {
+	return JobName;
+}
+
+void Character::equipWeapon(std::string weaponName, int weaponAttack) {
+	EquippedWeaponName = weaponName;
+	EquippedWeaponAttack = weaponAttack;
+	std::cout << weaponName << " 무기 장착 완료! (공격력 +" << weaponAttack << ")\n";
+	UpdateLevelStats();
+}
+
+void Character::showEquippedWeapon() {
+	if (EquippedWeaponName.empty()) {
+		std::cout << "장착된 무기 없음" << std::endl;
+	}
+	else {
+		std::cout << "장착된 무기 : " << EquippedWeaponName << " (공격력 +" << EquippedWeaponAttack << ")" << std::endl;
+	}
 }
