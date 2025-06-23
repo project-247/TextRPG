@@ -61,8 +61,8 @@ public:
 	// - 미믹은 체력과 공격력이 랜덤이지만 경험치는 다른 몬스터에 3배가량 더 많다
 	Mimic(int level) {
 		MonsterName = "랜덤※박스 미믹";
-		MonsterHealth = level * 50;
-		MonsterAttack = level * 50;
+		MonsterHealth = level * 1/*Stack(eng)*/;
+		MonsterAttack = level * 1/*Stack(eng)*/;
 		Experience = level * 3;
 	}
 };
