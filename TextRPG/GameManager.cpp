@@ -38,10 +38,10 @@ void GameManager::CreateCharacter() {
 	int input;
 
 	Character* character = Character::NewCharacter(); // 싱글톤 방식 캐릭터 생성
-	//Image images;
-	//images.Church();    
-	//images.Triforce();
-	//images.Cat();
+	Image images;
+	images.Church();    // 배경 이미지 출력 (장식용)
+	images.Triforce();
+	images.Cat();
 
 	while (true) {
 		cout << "당신의 이름을 입력하세요: ";
@@ -93,4 +93,9 @@ void GameManager::StartBattle() {
 	else {
 		battle();  // 일반 몬스터 전투
 	}
+}
+
+// 보스전 따로 호출할 때 (현재는 사실상 안 쓰이지만 대비용으로 남겨둠)
+void GameManager::StartBossBattle() {
+	bossBattle();
 }
