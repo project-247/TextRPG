@@ -1,7 +1,6 @@
 #pragma once
 #include "Monster.h"
 
-
 string Monster::getName() {
 	cout << "log1";
 	return MonsterName;

@@ -1,10 +1,10 @@
 #pragma once
+// 이곳은 선언하는 공간이다.
 #include <iostream>
 #include <string>
 #include <ctime>
+#include <random>
 using namespace std;
-
-// 이곳은 선언하는 공간이다.
 
 class Monster
 {
@@ -24,7 +24,7 @@ public:
 		MonsterHealth = -1;
 		MonsterAttack = -1;
 	}
-	// - ㅇㅇ? 이게 맞나?? 맞겠지
+
 	Monster(string name, int health, int attack)
 		: MonsterName(name), MonsterHealth(health), MonsterAttack(attack) {
 		cout << "// - 몬스터생성확인용";
