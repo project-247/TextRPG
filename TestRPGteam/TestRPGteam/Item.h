@@ -21,5 +21,5 @@ public:
     ItemType getType() const;
     int getValue() const;
 
-    void use();
+    void use(class Character* player); // 캐릭터 포인터 받음
 };
