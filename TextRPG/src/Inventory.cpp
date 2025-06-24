@@ -63,10 +63,17 @@ void Inventory::ShowUserItems()
     std::cout << "\n[인벤토리 목록]\n";
     for (size_t i = 0; i < UserItems.size(); ++i)
     {
-        if (UserItems[i].second > 0)
+        //무기가 아닐 때
+        if (UserItems[i].first.getType()!=ItemType::WEAPON && UserItems[i].second > 0)
         {
             std::cout << i + 1 << ". " << UserItems[i].first.getName() << UserItems[i].second << "개\n";
         }
+        //무기일 때
+        if (UserItems[i].first.getType() == ItemType::WEAPON && UserItems[i].second > 0)
+        {
+            std::cout << i + 1 << ". " << UserItems[i].first.getName() <<" (무기)" << "\n";
+        }
+
     }
 }
 
