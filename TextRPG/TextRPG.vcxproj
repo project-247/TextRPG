@@ -33,6 +33,7 @@
     <ClCompile Include="src\Weapon.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Core.h" />
     <ClInclude Include="include\battle.h" />
     <ClInclude Include="include\Character.h" />
     <ClInclude Include="include\GameManager.h" />
