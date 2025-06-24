@@ -55,9 +55,9 @@ void Character::MaxUp() {
 //LevelUp()시 체력과 공격력 초기화 메서드
 void Character::UpdateLevelStats() {
 	MaxUp(); //LevelUp()시 경험치 max 초기화 메서드 > 오류안나겟지?..
-	ChHP = MaxHP + (ChLevel * 20);          // **체력**: `(현재 체력 + (레벨 × 20))
-	MaxHP = ChHP;                           // **공격력**: `(현재 공격력 + (레벨 × 5))
-	ChAttack = ChAttack + (ChLevel * 5);    // 레벨업 시 체력은 최대치까지 완전히 회복!
+	ChHP = MaxHP + (ChLevel * 20);          // 체력 전체 회복
+	MaxHP = ChHP;                           // **체력**: `(현재 체력 + (레벨 × 20))
+	ChAttack = 30 + (ChLevel * 5) + inventory->NowWeaponAttack();    // **공격력**: `(기본 공격력 + (레벨 × 5)) + 장착 무기 공격력 //여기서 오류?
 }
 
 //체력 변동 메서드
@@ -114,39 +114,42 @@ int Character::GetChHP() {
 void Character::SetJob(std::string job) {
 	JobName = job;
 
+
 	if (job == "전사") {
-		equipWeapon("녹슨 검", 10);
+		inventory->AddUserItem(weaponData.at(job)[0], JobName);
 	}
 	else if (job == "궁수") {
-		equipWeapon("나무활", 8);
+		inventory->AddUserItem(weaponData.at(job)[0], JobName);
 	}
 	else if (job == "도적") {
-		equipWeapon("녹슨 단검", 9);
+		inventory->AddUserItem(weaponData.at(job)[0], JobName);
 	}
-	else {
-		EquippedWeaponName = "";
-		EquippedWeaponAttack = 0;
+	else if (job == "무직") {
 	}
-
-	UpdateLevelStats(); // 직업 변경시 스탯 업데이트
+	UpdateLevelStats(); // 직업 변경시 스탯 업데이트 > 오류 발생 > 변경 요망
 }
 
-std::string Character::GetJob() {
+std::string Character::GetJob()
+{
 	return JobName;
 }
 
-void Character::equipWeapon(std::string weaponName, int weaponAttack) {
-	EquippedWeaponName = weaponName;
-	EquippedWeaponAttack = weaponAttack;
-	std::cout << weaponName << " 무기 장착 완료! (공격력 +" << weaponAttack << ")\n";
+
+void Character::equipWeapon()
+{
+	std::cout << inventory->ReturnNowWeapon().getName() << " 무기 장착 완료! (공격력 +" << inventory->NowWeaponAttack() << ")\n";
 	UpdateLevelStats();
 }
 
-void Character::showEquippedWeapon() {
-	if (EquippedWeaponName.empty()) {
-		std::cout << "장착된 무기 없음" << std::endl;
-	}
-	else {
-		std::cout << "장착된 무기 : " << EquippedWeaponName << " (공격력 +" << EquippedWeaponAttack << ")" << std::endl;
-	}
+void Character::showEquippedWeapon()
+{
+	std::cout << "무기 : " << inventory->ReturnNowWeapon().getName() << " (공격력 +" << inventory->NowWeaponAttack() << ")" << std::endl;
+}
+
+void SetEquippedWeaponName() {
+
+}
+
+void ItemUse() {
+
 }

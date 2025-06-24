@@ -1,5 +1,7 @@
 ﻿#pragma once
 #include <string>
+#include "Inventory.h"
+#include "WeaponMap.h"
 
 class Character {
 private:
@@ -16,17 +18,24 @@ private:
 	int ChMax = 10;             //n레벨 경험치 // 변경했으니 ReadMe에 작성하기
 	long long ChGold = 100;       //초기 소지금액
 	int MaxHP = 200;
+	//Item UserWeapon;			//소지 무기 중 공격력이 가장 강한 무기
 
 	std::string JobName = "무직";  // 직업 저장용
-	std::string EquippedWeaponName = "";
-	int EquippedWeaponAttack = 0;
+	//std::string EquippedWeaponName = ""; //무기 이름
+	//int EquippedWeaponAttack = 0;
+
+	// 무기 전체 데이터맵
+	const std::map<std::string, std::vector<Item>>& weaponData;
+	// 해당 직업과 일치하는 무기 리스트 //오류 발생
+	std::vector<Item> ClassrWeapons;
 
 	//캐릭터 생성자 (싱글톤)
-	Character() {}
+	Character() : weaponData(WeaponMap::getWeaponData()) {}
 
 public:
 	int GetChAttack();
 	int GetChHP();
+	Inventory* inventory = new Inventory();
 
 	//복사 생성자 delete
 	Character(const Character&) = delete;
@@ -37,7 +46,10 @@ public:
 	//이동대입 생성자 delete
 	Character& operator=(Character&&) = delete;
 	//소멸자
-	~Character() = delete;
+	~Character() {
+		delete inventory;
+		inventory = nullptr;
+	}
 
 	//캐릭터 생성 메서드
 	static Character* NewCharacter();
@@ -82,7 +94,15 @@ public:
 	void SetJob(std::string);
 	std::string GetJob();
 
+	//인벤토리 반환 함수(없어도 inventory 목록 출력 가능한가?)
+
+	//무기 장착 시 공격력 상승 메서드 > inventory의 공격력 반환 메서드 NowWeaponAttack()로 대체
+	//void ChanghCHAttack();
+
 	// 무기 장착 함수 (무기 이름, 공격력 받아서 장착)
-	void equipWeapon(std::string weaponName, int weaponAttack);
+	void equipWeapon();
+
+	//현재 무기 상태 출력 메서드
 	void showEquippedWeapon();
+
 };
