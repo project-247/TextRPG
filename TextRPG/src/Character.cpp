@@ -15,10 +15,10 @@ Character* Character::NewCharacter() {
 	return Instance;
 }
 
-//캐릭터 경험치 습득 메서드
+//캐릭터 경험치 습득 메서드 > gameManager님은 이것 사용
 void Character::ChExpUp(int exp) {   //입력 : 몬스터 처치 경험치
 	ChExperience += exp;
-	if (ChExperience >= ChMax) {
+	while (ChExperience >= ChMax) {
 		LevelUp();
 	}
 }
@@ -55,9 +55,9 @@ void Character::MaxUp() {
 //LevelUp()시 체력과 공격력 초기화 메서드
 void Character::UpdateLevelStats() {
 	MaxUp(); //LevelUp()시 경험치 max 초기화 메서드 > 오류안나겟지?..
-	ChHP = MaxHP + (ChLevel * 20);          // 체력 전체 회복
+	ChHP = MaxHP + 20;          // 체력 전체 회복 + 20상승
 	MaxHP = ChHP;                           // **체력**: `(현재 체력 + (레벨 × 20))
-	ChAttack = 30 + (ChLevel * 5) + inventory->NowWeaponAttack();    // **공격력**: `(기본 공격력 + (레벨 × 5)) + 장착 무기 공격력 //여기서 오류?
+	ChAttack = 30 + (ChLevel*5);    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
 }
 
 //체력 변동 메서드
@@ -66,7 +66,7 @@ void Character::ChHPUpDown(int changeHP) {
 	if (ChHP <= 0) { ChHP = 0; }
 }
 
-//공격력 변동 메서드
+//공격력 변동 메서드 > 아이템으로 오른 공격력은 1턴 지나면 다시 아이템 효과 없어져야 함 > 주의
 void Character::ChAttackUpDown(int changeAt) {
 	ChAttack += changeAt;
 }
@@ -95,7 +95,7 @@ void Character::NowCharacter() {
 	std::cout << "직업 : " << JobName << std::endl;
 	showEquippedWeapon();
 	std::cout << "체력 : " << ChHP << std::endl;
-	std::cout << "공격력 : " << ChAttack << std::endl;
+	std::cout << "공격력 : " << GetChAttack() << std::endl;
 }
 
 //캐릭터 레벨 반환 메서드
@@ -104,7 +104,7 @@ int Character::GetChLevel() {
 }
 
 int Character::GetChAttack() {
-	return ChAttack;
+	return ChAttack + inventory->NowWeaponAttack(); //기본 공격력 : 무기 공격력
 }
 
 int Character::GetChHP() {
@@ -113,8 +113,6 @@ int Character::GetChHP() {
 
 void Character::SetJob(std::string job) {
 	JobName = job;
-
-
 	if (job == "전사") {
 		inventory->AddUserItem(weaponData.at(job)[0], JobName);
 	}
@@ -126,7 +124,7 @@ void Character::SetJob(std::string job) {
 	}
 	else if (job == "무직") {
 	}
-	UpdateLevelStats(); // 직업 변경시 스탯 업데이트 > 오류 발생 > 변경 요망
+	//UpdateLevelStats(); // 직업 변경시 스탯 업데이트 > 오류 발생 > 삭제
 }
 
 std::string Character::GetJob()
@@ -138,7 +136,7 @@ std::string Character::GetJob()
 void Character::equipWeapon()
 {
 	std::cout << inventory->ReturnNowWeapon().getName() << " 무기 장착 완료! (공격력 +" << inventory->NowWeaponAttack() << ")\n";
-	UpdateLevelStats();
+	//UpdateLevelStats();
 }
 
 void Character::showEquippedWeapon()
@@ -146,10 +144,10 @@ void Character::showEquippedWeapon()
 	std::cout << "무기 : " << inventory->ReturnNowWeapon().getName() << " (공격력 +" << inventory->NowWeaponAttack() << ")" << std::endl;
 }
 
-void SetEquippedWeaponName() {
-
-}
-
-void ItemUse() {
-
-}
+//void SetEquippedWeaponName() {
+//
+//}
+//
+//void ItemUse() {
+//
+//}
