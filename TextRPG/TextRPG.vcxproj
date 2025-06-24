@@ -40,7 +40,7 @@
     <ClInclude Include="include\Inventory.h" />
     <ClInclude Include="include\Item.h" />
     <ClInclude Include="include\Job.h" />
-    <ClInclude Include="include\monster.h" />
+    <ClInclude Include="include\Monster.h" />
     <ClInclude Include="include\NowUser.h" />
     <ClInclude Include="include\Shop.h" />
     <ClInclude Include="include\WeaponMap.h" />

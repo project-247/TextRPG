@@ -27,7 +27,7 @@ public:
 	// - ㅇㅇ? 이게 맞나?? 맞겠지
 	Monster(string name, int health, int attack)
 		: MonsterName(name), MonsterHealth(health), MonsterAttack(attack) {
-		cout << "// - 몬스터생성확인용";
+		/*cout << "// - 몬스터생성확인용";*/
 	}
 	
 	virtual string getName(); // 몬스터에게 이름을 설정해주는 속성
