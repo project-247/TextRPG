@@ -32,8 +32,9 @@ void Item::use(Character* player) {
         break;
 
     case ItemType::GOLD:
-        player->SetGold(value);
-        std::cout << value << "골드 획득!\n";
+        srand(time(0));
+        player->SetGold((rand() % 450 ) + 50 );
+        std::cout << (rand() % 450) + 50 << "골드 획득!\n";
         break;
 
     default:

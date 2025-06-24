@@ -19,7 +19,7 @@ void Shop::LoadItemsForJob(const std::string& job) {
     // 공용 아이템 다시 추가
     stock.push_back(Item("힐 포션", ItemType::HEAL, 50, 100));
     stock.push_back(Item("힘 포션", ItemType::BOOST, 10, 120));
-    stock.push_back(Item("골드 상자", ItemType::GOLD, 500, 10));
+    stock.push_back(Item("골드 상자", ItemType::GOLD, 500, 100));
 }
 
 void Shop::DisplayItems() const {
