@@ -22,6 +22,7 @@ std::string getValidName() {
 		}
 
 		if (blank == "") {
+			system("cls");
 			std::cout << "[에러] 이름은 공백일 수 없습니다. 다시 입력해주세요.\n";
 		}
 		else {
@@ -29,6 +30,37 @@ std::string getValidName() {
 		}
 	}
 	return input;
+}
+
+void GameManager::CreateCharacter() {
+	int input;
+	Character* character = Character::NewCharacter();
+	std::string name = getValidName();
+
+	while (true) {
+		std::cout << name << " 맞습니까? (1. 예 / 2. 아니오): ";
+		std::cin >> input;
+		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		if (input == 1) {
+			character->SetChName(name);
+			std::cout << "환영합니다, " << character->GetChName() << "님!" << std::endl;
+
+			std::cout << "초기 상태 → 레벨: " << character->GetChLevel()
+				<< ", 체력: " << character->GetChHP()
+				<< ", 공격력: " << character->GetChAttack() << std::endl;
+			break;
+		}
+		else if (input == 2)
+		{
+			name = getValidName();
+		}
+		else if (cin.fail())
+		{
+			cin.clear();
+			std::cout << "잘못된 입력입니다. 다시 입력해주세요.\n";
+		}
+	}
 }
 
 void GameManager::StartGame() {
@@ -61,33 +93,6 @@ void GameManager::StartGame() {
 	}
 }
 
-void GameManager::CreateCharacter() {
-	int input;
-	Character* character = Character::NewCharacter();
-	std::string name = getValidName();
-
-	while (true) {
-		std::cout << name << " 맞습니까? (1. 예 / 2. 아니오): ";
-		std::cin >> input;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-		if (input == 1) {
-			character->SetChName(name);
-			std::cout << "환영합니다, " << character->GetChName() << "님!" << std::endl;
-
-			std::cout << "초기 상태 → 레벨: " << character->GetChLevel()
-				<< ", 체력: " << character->GetChHP()
-				<< ", 공격력: " << character->GetChAttack() << std::endl;
-			break;
-		}
-		else if (input == 2) {
-			name = getValidName();
-		}
-		else {
-			std::cout << "잘못된 입력입니다. 다시 입력해주세요.\n";
-		}
-	}
-}
 
 void GameManager::SelectJob() {
 	int input, input2;
