@@ -87,12 +87,13 @@ void GameManager::SelectJob() {
 		cin >> input;
 
 		if (input > 0 && input < 5) {
-			cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
+			cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): "; //3. 설명 보기 ReturnInputJobInfo(input) 추가해주세용
 			cin >> input2;
 			if (input2 == 1) {
 				CreateJob(input, character);
 				break;
 			}
+			//else if ...
 		}
 	}
 }
@@ -100,7 +101,11 @@ void GameManager::SelectJob() {
 // 캐릭터 상태 출력
 void GameManager::ShowCharacterStatus() {
 	NowUser nowUser;
+	//인벤토리 확인을 위한 임시 선언
+	Character* character = Character::NewCharacter();
 	nowUser.ReturnUser();
+	//인벤토리 확인을 위한 임시 출력
+	character->inventory->ShowUserItems();
 }
 
 // 전투 시작
