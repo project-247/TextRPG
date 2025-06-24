@@ -14,7 +14,7 @@ public:
     }
 
     //UserItems에 아이템(힐포션, 버프포션, 골드, 무기) 추가
-    void AddUserItem(const Item& item, std::string);
+    void AddUserItem(const Item&, std::string);
     //전체 아이템 목록 출력
     void ShowUserItems();
     //아이템 사용할 때 아이템 개수 감소

@@ -10,7 +10,7 @@ public:
 	// - 공격력 : (레벨 × 5)
 	Slime(int level) {
 		MonsterName = "귀여운슬라임";
-		MonsterHealth = level * 30;
+		MonsterHealth = level * 120;
 		MonsterAttack = level * 5;
 		Experience = (level * 3) / 2;
 	}

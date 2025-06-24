@@ -27,7 +27,7 @@ private:
 	// 무기 전체 데이터맵
 	const std::map<std::string, std::vector<Item>>& weaponData;
 	// 해당 직업과 일치하는 무기 리스트 //오류 발생
-	std::vector<Item> ClassrWeapons;
+	//std::vector<Item> ClassrWeapons;
 
 	//캐릭터 생성자 (싱글톤)
 	Character() : weaponData(WeaponMap::getWeaponData()) {}

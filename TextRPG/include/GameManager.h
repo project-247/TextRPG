@@ -20,5 +20,6 @@ private:
 	void SelectJob();
 	void ShowCharacterStatus();
 	void StartBattle();
+	void OpenShop();
 	void StartBossBattle();
 };

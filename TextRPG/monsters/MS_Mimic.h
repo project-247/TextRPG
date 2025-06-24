@@ -10,8 +10,8 @@ public:
 	// - 공격력 : (레벨 × 15)
 	Mimic(int level) {
 		MonsterName = "랜덤※박스 미믹";
-		MonsterHealth = level * 40;
-		MonsterAttack = level * 15;
+		MonsterHealth = level * 80;
+		MonsterAttack = level * 100;
 		Experience = (level * 3) / 2;
 	}
 };

@@ -46,7 +46,7 @@ void Character::SetChName(std::string UName) {
 
 //LevelUp()시 경험치 max 초기화 메서드
 void Character::MaxUp() {
-	int maxEXP[10] = { 0, 20, 80, 140, 200, 260, 320, 380, 440, 500 };
+	int maxEXP[10] = { 0, 10, 30, 50, 70, 100, 150, 200, 250, 300 }; // now Level에서 level+1레벨이 되기 위한 경험치
 	if (ChLevel > 1 && ChLevel < 10) {
 		ChMax = maxEXP[ChLevel];
 	}
@@ -67,7 +67,7 @@ void Character::ChHPUpDown(int changeHP) {
 }
 
 //공격력 변동 메서드 > 아이템으로 오른 공격력은 1턴 지나면 다시 아이템 효과 없어져야 함 > 주의
- void Character::ChAttackUpDown(int changeAt) {
+void Character::ChAttackUpDown(int changeAt) {
 	ChAttack += changeAt;
 }
 
