@@ -57,7 +57,7 @@ void Character::UpdateLevelStats() {
 	MaxUp(); //LevelUp()시 경험치 max 초기화 메서드 > 오류안나겟지?..
 	ChHP = MaxHP + 20;          // 체력 전체 회복 + 20상승
 	MaxHP = ChHP;                           // **체력**: `(현재 체력 + (레벨 × 20))
-	ChAttack = 30 + 5;    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
+	ChAttack = 30 + (ChLevel*5);    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
 }
 
 //체력 변동 메서드
