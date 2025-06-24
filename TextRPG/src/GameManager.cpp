@@ -5,6 +5,7 @@
 #include "Character.h"
 #include "Shop.h"
 #include "NowUser.h"
+#include "Color_Text.h"
 
 GameManager::GameManager() {}
 
@@ -23,7 +24,7 @@ std::string getValidName() {
 
 		if (blank == "") {
 			system("cls");
-			std::cout << "[에러] 이름은 공백일 수 없습니다. 다시 입력해주세요.\n";
+			std::cout << "\033[31m[ERROR] \033[0m \033[1m이름은 공백일 수 없습니다. 다시 입력해주세요.\033[0m\n\n";
 		}
 		else {
 			break;
@@ -43,6 +44,7 @@ void GameManager::CreateCharacter() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if (input == 1) {
+			system("cls");
 			character->SetChName(name);
 			std::cout << "환영합니다, " << character->GetChName() << "님!" << std::endl;
 
@@ -55,10 +57,11 @@ void GameManager::CreateCharacter() {
 		{
 			name = getValidName();
 		}
-		else if (cin.fail())
-		{
+		else if (cin.fail()) {
 			cin.clear();
-			std::cout << "잘못된 입력입니다. 다시 입력해주세요.\n";
+			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			system("cls");
+			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
 	}
 }
