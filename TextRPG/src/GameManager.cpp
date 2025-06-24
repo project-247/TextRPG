@@ -37,7 +37,7 @@ void GameManager::StartGame() {
 	ShowCharacterStatus();
 
 	while (true) {
-		cout << "\n=== 메뉴 ===\n1. 전투 시작\n2. 상태 확인\n3. 종료\n선택: ";
+		cout << "\n=== 메뉴 ===\n1. 전투 시작\n2. 상태 확인\n3. 종료\n 4. 상점 방문\n선택: ";
 		int menu;
 		cin >> menu;
 
@@ -50,6 +50,9 @@ void GameManager::StartGame() {
 		else if (menu == 3) {
 			cout << "게임 종료" << endl;
 			break;
+		}
+		else if (menu == 4) {
+			OpenShop();
 		}
 	}
 }
@@ -117,5 +120,34 @@ void GameManager::StartBattle() {
 	}
 	else {
 		battle();
+	}
+}
+
+void GameManager::OpenShop() {
+	Character* player = Character::NewCharacter();
+	Shop shop;
+
+	shop.LoadItemsForJob(player->GetJob());
+
+	while (true) {
+		cout << "\n=== 상점 ===" << endl;
+		shop.DisplayItems();
+		cout << player->GetGold() << " 골드 보유\n";
+		cout << "구매할 아이템 번호를 입력하세요 (0: 나가기): ";
+
+		int choice;
+		cin >> choice;
+
+		if (choice == 0) {
+			cout << "상점 방문을 종료합니다.\n";
+			break;
+		}
+
+		if (!shop.BuyItem(choice, player)) {
+			cout << "구매에 실패했습니다.\n";
+		}
+		else {
+			cout << "구매 완료!\n";
+		}
 	}
 }

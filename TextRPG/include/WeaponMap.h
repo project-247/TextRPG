@@ -11,35 +11,35 @@ public:
     static const std::map<std::string, std::vector<Item>>& getWeaponData() {
         static std::map<std::string, std::vector<Item>> weaponMap = {
             { "전사", {
-                Item("녹슨 검", ItemType::WEAPON, 10),
-                Item("강철검", ItemType::WEAPON, 30),
-                Item("버그검", ItemType::WEAPON, 50)
+                Item("녹슨 검", ItemType::WEAPON, 10, 100),
+                Item("강철검", ItemType::WEAPON, 30, 500),
+                Item("버그검", ItemType::WEAPON, 50, 800)
             }},
             { "도적", {
-                Item("녹슨 단검", ItemType::WEAPON, 10),
-                Item("단검", ItemType::WEAPON, 20),
-                Item("디버깅단검", ItemType::WEAPON, 40)
+                Item("녹슨 단검", ItemType::WEAPON, 10, 100),
+                Item("단검", ItemType::WEAPON, 20, 400),
+                Item("디버깅단검", ItemType::WEAPON, 40, 700)
             }},
             { "궁수", {
-                Item("나무 활", ItemType::WEAPON, 10),
-                Item("활", ItemType::WEAPON, 25),
-                Item("헤더화살", ItemType::WEAPON, 45)
+                Item("나무 활", ItemType::WEAPON, 10, 100),
+                Item("활", ItemType::WEAPON, 25, 450),
+                Item("헤더화살", ItemType::WEAPON, 45, 950)
             }},
         };
         return weaponMap;
     }
 
     // 무직용 무기는 모든 직업 무기를 합쳐서 얻는 함수 (포션, 스크롤 제외)
-    static std::vector<Item> getAllWeaponsForNoJob() {
-        const auto& weaponMap = getWeaponData();
-        std::vector<Item> allWeapons;
-        for (const auto& pair : weaponMap) {
-            allWeapons.insert(allWeapons.end(), pair.second.begin(), pair.second.end());
-        }
-        // 무직 무기 예시 아이템도 추가 가능
-        allWeapons.push_back(Item("막대기", ItemType::WEAPON, 10));
-        allWeapons.push_back(Item("방망이", ItemType::WEAPON, 35));
-        return allWeapons;
-    }
+    //static std::vector<Item> getAllWeaponsForNoJob() {
+    //    const auto& weaponMap = getWeaponData();
+    //    std::vector<Item> allWeapons;
+    //    for (const auto& pair : weaponMap) {
+    //        allWeapons.insert(allWeapons.end(), pair.second.begin(), pair.second.end());
+    //    }
+    //    // 무직 무기 예시 아이템도 추가 가능
+    //    allWeapons.push_back(Item("막대기", ItemType::WEAPON, 10, 100));
+    //    allWeapons.push_back(Item("방망이", ItemType::WEAPON, 35, 300));
+    //    return allWeapons;
+    //}
 };
 

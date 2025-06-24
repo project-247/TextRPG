@@ -129,6 +129,6 @@ int Inventory::NowWeaponAttack() {
 
 void Inventory::AddFirst()
 {
-    NowWeapon = { "주먹",ItemType::WEAPON, 0 };
+    NowWeapon = { "주먹",ItemType::WEAPON, 0 , 0};
     UserItems.push_back({ NowWeapon,1 });
 }
