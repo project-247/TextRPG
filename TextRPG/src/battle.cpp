@@ -9,7 +9,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-
+#include <Windows.h>
 using namespace std;
 
 // 일반 몬스터와의 전투 함수
@@ -43,7 +43,7 @@ void battle() {
 		// 플레이어가 먼저 공격
 		cout << "\n플레이어가 " << monster->getName() << " 를 공격합니다!" << endl;
 		monster->takeDamage(player->GetChAttack());
-
+		Sleep(1000);
 		// 몬스터 사망 체크
 		if (monster->getHealth() <= 0) {
 			cout << monster->getName() << " 처치!" << endl;
@@ -62,6 +62,7 @@ void battle() {
 		cout << monster->getName() << " 이 반격합니다!" << endl;
 		player->ChHPUpDown(-monster->getAttack());
 		cout << "현재 HP: " << player->GetChHP() << endl;
+		Sleep(1000);
 	}
 
 	// 플레이어 사망 시 게임 오버 처리

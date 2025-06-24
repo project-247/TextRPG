@@ -10,6 +10,8 @@
 #include "Shop.h"
 #include "battle.h"  // 전투 함수가 전역 함수로 선언되어 있음
 
+
+
 class GameManager {
 public:
 	GameManager();

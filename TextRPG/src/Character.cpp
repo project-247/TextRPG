@@ -89,12 +89,12 @@ void Character::SetGold(long long a) {
 //현재 캐릭터 상태 확인 메서드
 void Character::NowCharacter() {
 	std::cout << "\n[현재 상태]" << std::endl;
-	std::cout << "이름 : " << ChName << std::endl;
-	std::cout << "레벨 : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
+	std::cout << "이　름 : " << ChName << std::endl;
+	std::cout << "레　벨 : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
 	std::cout << "소지금 : " << ChGold << "G" << std::endl;
-	std::cout << "직업 : " << JobName << std::endl;
+	std::cout << "직　업 : " << JobName << std::endl;
 	showEquippedWeapon();
-	std::cout << "체력 : " << ChHP << std::endl;
+	std::cout << "체　력 : " << ChHP << std::endl;
 	std::cout << "공격력 : " << GetChAttack() << std::endl;
 }
 

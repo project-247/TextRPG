@@ -5,7 +5,6 @@
 #include "Character.h"
 #include "Shop.h"
 #include "NowUser.h"
-#include "Color_Text.h"
 
 GameManager::GameManager() {}
 
@@ -39,7 +38,7 @@ void GameManager::CreateCharacter() {
 	std::string name = getValidName();
 
 	while (true) {
-		std::cout << name << " 맞습니까? (1. 예 / 2. 아니오): ";
+		std::cout << name <<" 맞습니까? (1. 예 / 2. 아니오): ";
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -57,9 +56,9 @@ void GameManager::CreateCharacter() {
 		{
 			name = getValidName();
 		}
-		else if (cin.fail()) {
-			cin.clear();
-			cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		else if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
@@ -90,8 +89,10 @@ void GameManager::StartGame() {
 		else if (menu == 4) {
 			OpenShop();
 		}
-		else {
-			std::cout << "잘못된 메뉴 선택입니다. 다시 입력해주세요.\n";
+		else if (std::cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
 	}
 }
@@ -104,7 +105,13 @@ void GameManager::SelectJob() {
 	while (character->GetJob() == "무직") {
 		std::cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직\n선택: ";
 		std::cin >> input;
-		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+		if (cin.fail()) {
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			
+			continue;
+		}
 
 		if (input > 0 && input < 5) {
 			std::cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
