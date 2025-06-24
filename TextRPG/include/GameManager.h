@@ -8,7 +8,7 @@
 #include "Inventory.h"
 #include "Item.h"
 #include "Shop.h"
-#include "battle.h" 
+#include "battle.h"  // 전투 함수가 전역 함수로 선언되어 있음
 
 class GameManager {
 public:
@@ -21,5 +21,5 @@ private:
 	void ShowCharacterStatus();
 	void StartBattle();
 	void OpenShop();
-	void StartBossBattle();
+	void StartBossBattle();  // 보스 전투 호출만 담당
 };
