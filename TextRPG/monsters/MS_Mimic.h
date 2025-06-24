@@ -11,7 +11,7 @@ public:
 	Mimic(int level) {
 		MonsterName = "·£´ý¡Ø¹Ú½º ¹Ì¹Í";
 		MonsterHealth = level * 80;
-		MonsterAttack = level * 100;
+		MonsterAttack = level * 20;
 		Experience = (level * 3) / 2;
 	}
 };

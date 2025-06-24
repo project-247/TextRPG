@@ -13,6 +13,8 @@ public:
 	void cat3();
 
 	void monster();
+	
+	void Loading();
 
 };
 

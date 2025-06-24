@@ -76,3 +76,7 @@ void Image::monster() {
         ¡å¡á¡á¡á¡á¡á¡á
 )" << std::endl;
 }
+
+void Image::Loading() {
+    std::cout << R"()";
+}
