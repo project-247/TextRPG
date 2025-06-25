@@ -57,7 +57,7 @@ void GameManager::CreateCharacter() {
 	std::string name = getValidName();
 
 	while (true) {
-		std::cout<< "\n" << name << " 맞습니까? (1. 예 / 2. 아니오): ";
+		std::cout << "고민하신 닉네임이 " << "\n\033[33m" << name << " \033[0m 맞습니까? (1. 예 / 2. 아니오): ";
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -67,12 +67,12 @@ void GameManager::CreateCharacter() {
 			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
 			character->SetChName(name);
-			std::cout << "환영합니다, " << character->GetChName() << "님!\n\n" << std::endl;
+			std::cout << "환영합니다, "<< "\033[33m" << character->GetChName() << "\033[0m님!\n\n" << std::endl;
 
-			std::cout << "※초기 상태※\n" << endl;
+			/*std::cout << "※초기 상태※\n" << endl;
 			std::cout << "레　벨: "  << character->GetChLevel() << " Level" << std::endl;
 			std::cout << "체　력: " << character->GetChHP() << " HP" << std::endl;
-			std::cout << "공격력: " << character->GetChAttack() << " ATK" << std::endl;
+			std::cout << "공격력: " << character->GetChAttack() << " ATK" << std::endl; --- 상단 이미지에 스탯 출력할 예정 */ 
 			break;
 		}
 		else if (input == 2)
@@ -113,23 +113,28 @@ void GameManager::StartGame() {
 		std::cin >> menu;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-		if (menu == 1) {
+		if (menu == 1) { // 전투시작
 			StartBattle();
 		}
-		else if (menu == 2) {
+		else if (menu == 2) { // 상태확인
 			ShowCharacterStatus();
 		}
-		else if (menu == 3) {
+		else if (menu == 3) { // 종료
 			std::cout << "게임 종료" << std::endl;
 			break;
 		}
-		else if (menu == 4) {
+		else if (menu == 4) { // 상점이동
+			system("cls");
+			image.leaf();
+			SetImageUI();
 			OpenShop();
 		}
 		else if (std::cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			/*system("cls");*/
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
+			continue;
 		}
 	}
 }
@@ -140,7 +145,7 @@ void GameManager::SelectJob() {
 	Character* character = Character::NewCharacter();
 
 	while (character->GetChJob() == "무직") {
-		std::cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직\n선택: ";
+		std::cout << "직업을 선택해주세요!\033[1m\n\n 1. 전사\n 2. 궁수\n 3. 도적\n 4. 무직\033[0m\n\n 내 선택: ";
 		std::cin >> input;
 
 		if (cin.fail()) {
@@ -151,7 +156,7 @@ void GameManager::SelectJob() {
 			//system("cls"); 밑에 적어주세요
 			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
-			
+			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다.\n\n";
 			continue;
 		}
 
@@ -165,6 +170,10 @@ void GameManager::SelectJob() {
 				break;
 			}
 			else if (input2 == 2) {
+				system("cls");
+				//system("cls"); 밑에 적어주세요
+				image.leaf(); //상황에 맞는 이미지로 변경 예정
+				SetImageUI();
 				std::cout << "직업 선택을 다시 합니다.\n";
 			}
 			else {
@@ -210,10 +219,10 @@ void GameManager::OpenShop() {
 	shop.LoadItemsForJob(player->GetChJob());
 
 	while (true) {
-		std::cout << "\n=== 상점 ===" << std::endl;
+		/*ShowCharacterStatus();*/
+		std::cout << "\n=== 상점 ==="<< " \033[33m" << player->GetGold() << "\033[0m 골드 보유\n\n";
 		shop.DisplayItems();
-		std::cout << player->GetGold() << " 골드 보유\n";
-		std::cout << "구매할 아이템 번호를 입력하세요 (0: 나가기): ";
+		std::cout << "\n구매할 아이템 번호를 입력하세요 (0: 나가기): ";
 
 		int choice;
 		std::cin >> choice;

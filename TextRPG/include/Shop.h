@@ -4,6 +4,8 @@
 #include "Item.h"
 #include "Inventory.h"
 #include "Character.h"
+#include <conio.h>
+#include "Image.h"
 
 class Shop {
 public:
@@ -16,4 +18,5 @@ public:
 
 private:
     std::vector<Item> stock;
+    Image image;
 };
