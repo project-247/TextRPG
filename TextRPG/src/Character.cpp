@@ -88,6 +88,7 @@ void Character::SetGold(long long a) {
 
 //현재 캐릭터 상태 확인 메서드
 void Character::NowCharacter() {
+	
 	std::cout << "\n[현재 상태]" << std::endl;
 	std::cout << "이　름 : " << ChName << std::endl;
 	std::cout << "레　벨 : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
@@ -127,7 +128,7 @@ void Character::SetJob(std::string job) {
 	//UpdateLevelStats(); // 직업 변경시 스탯 업데이트 > 오류 발생 > 삭제
 }
 
-std::string Character::GetJob()
+std::string Character::GetChJob()
 {
 	return JobName;
 }

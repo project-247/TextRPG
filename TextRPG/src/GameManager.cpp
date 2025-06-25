@@ -6,12 +6,18 @@
 #include "Shop.h"
 #include "NowUser.h"
 
+#define NOMINMAX
+#include <windows.h> // 커서 위치 조작용
+
 GameManager::GameManager() {}
 
 std::string getValidName() {
 	std::string input;
 	while (true) {
-		std::cout << "캐릭터 이름을 입력하세요: ";
+		std::cout << "================================" << endl;
+		std::cout << "【  캐릭터 이름을 입력하세요  】 " << endl;
+		std::cout << "================================" << endl;
+		std::cout << "Name : ";
 		std::getline(std::cin, input);
 
 		std::string blank = "";
@@ -32,28 +38,36 @@ std::string getValidName() {
 	return input;
 }
 
+ /*콘솔 커서 위치 이동 함수*/
+void moveCursor(int x, int y) {
+	COORD pos = { (SHORT)x, (SHORT)y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
+
 void GameManager::CreateCharacter() {
 	int input;
 	Character* character = Character::NewCharacter();
 	std::string name = getValidName();
 
 	while (true) {
-		std::cout << name <<" 맞습니까? (1. 예 / 2. 아니오): ";
+		std::cout<< "\n" << name << " 맞습니까? (1. 예 / 2. 아니오): ";
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if (input == 1) {
 			system("cls");
 			character->SetChName(name);
-			std::cout << "환영합니다, " << character->GetChName() << "님!" << std::endl;
+			std::cout << "환영합니다, " << character->GetChName() << "님!\n\n" << std::endl;
 
-			std::cout << "초기 상태 → 레벨: " << character->GetChLevel()
-				<< ", 체력: " << character->GetChHP()
-				<< ", 공격력: " << character->GetChAttack() << std::endl;
+			std::cout << "※초기 상태※\n" << endl;
+			std::cout << "레　벨: "  << character->GetChLevel() << " Level" << std::endl;
+			std::cout << "체　력: " << character->GetChHP() << " HP" << std::endl;
+			std::cout << "공격력: " << character->GetChAttack() << " ATK" << std::endl;
 			break;
 		}
 		else if (input == 2)
 		{
+			system("cls");
 			name = getValidName();
 		}
 		else if (std::cin.fail()) {
@@ -102,13 +116,14 @@ void GameManager::SelectJob() {
 	int input, input2;
 	Character* character = Character::NewCharacter();
 
-	while (character->GetJob() == "무직") {
+	while (character->GetChJob() == "무직") {
 		std::cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직\n선택: ";
 		std::cin >> input;
 
 		if (cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			system("cls");
 			
 			continue;
 		}
@@ -168,7 +183,7 @@ void GameManager::OpenShop() {
 	Character* player = Character::NewCharacter();
 	Shop shop;
 
-	shop.LoadItemsForJob(player->GetJob());
+	shop.LoadItemsForJob(player->GetChJob());
 
 	while (true) {
 		std::cout << "\n=== 상점 ===" << std::endl;

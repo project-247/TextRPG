@@ -52,7 +52,7 @@ bool Shop::BuyItem(int index, Character* player) {
     }
     else {
         // 무기나 기타 아이템은 인벤토리에 추가
-        player->inventory->AddUserItem(item, player->GetJob());
+        player->inventory->AddUserItem(item, player->GetChJob());
     }
 
     return true;

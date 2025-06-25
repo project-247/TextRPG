@@ -42,7 +42,7 @@ void battle() {
 		// 플레이어가 먼저 공격
 		cout << "\n플레이어가 " << monster->getName() << " 를 공격합니다!" << endl;
 		monster->takeDamage(player->GetChAttack());
-		Sleep(1000);
+		Sleep(700);
 		// 몬스터 사망 체크
 		if (monster->getHealth() <= 0) {
 			cout << monster->getName() << " 처치!" << endl;
@@ -61,7 +61,7 @@ void battle() {
 		cout << monster->getName() << " 이 반격합니다!" << endl;
 		player->ChHPUpDown(-monster->getAttack());
 		cout << "현재 HP: " << player->GetChHP() << endl;
-		Sleep(1000);
+		Sleep(700);
 	}
 
 	// 플레이어 사망 시 게임 오버 처리
