@@ -114,7 +114,7 @@ void GameManager::SelectJob() {
 		}
 
 		if (input > 0 && input < 5) {
-			std::cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
+			std::cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오 / 3. 설명 보기): ";
 			std::cin >> input2;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -124,6 +124,9 @@ void GameManager::SelectJob() {
 			}
 			else if (input2 == 2) {
 				std::cout << "직업 선택을 다시 합니다.\n";
+			}
+			else if (input2 == 3) {
+				std::cout << ReturnInputJobInfo(input) << std::endl;
 			}
 			else {
 				std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n";
