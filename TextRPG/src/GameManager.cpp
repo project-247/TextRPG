@@ -257,7 +257,7 @@ void GameManager::OpenShop() {
 			//전체 메뉴창 출력
 			image.RenderSystemUI();
 			//우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
-			image.RenderMenu(60, 15);
+			image.RenderMenu();
 			//Text RPG 이미지 출력 >> 창 아래로 커서 이동
 			image.Loading2(60, 3);
 			continue;
