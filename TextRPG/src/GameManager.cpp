@@ -6,6 +6,9 @@
 #include "Shop.h"
 #include "NowUser.h"
 
+//#define NOMINMAX
+//#include <windows.h> // 커서 위치 조작용
+
 GameManager::GameManager() {}
 
 std::string getValidName() {
@@ -35,6 +38,12 @@ std::string getValidName() {
 	return input;
 }
 
+// 콘솔 커서 위치 이동 함수
+//void moveCursor(int x, int y) {
+//	COORD pos = { (SHORT)x, (SHORT)y };
+//	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+//}
+
 void GameManager::CreateCharacter() {
 	int input;
 	Character* character = Character::NewCharacter();
@@ -48,7 +57,7 @@ void GameManager::CreateCharacter() {
 		if (input == 1) {
 			system("cls");
 			character->SetChName(name);
-			std::cout << "환영합니다, " << character->GetChName() << "님!" << std::endl;
+			std::cout << "환영합니다, " << character->GetChName() << "님!\n\n" << std::endl;
 
 			std::cout << "※초기 상태※\n" << endl;
 			std::cout << "레　벨: "  << character->GetChLevel() << " Level" << std::endl;
@@ -58,6 +67,7 @@ void GameManager::CreateCharacter() {
 		}
 		else if (input == 2)
 		{
+			system("cls");
 			name = getValidName();
 		}
 		else if (std::cin.fail()) {
