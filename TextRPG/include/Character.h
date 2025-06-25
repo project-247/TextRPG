@@ -92,7 +92,7 @@ public:
 
 	//직업 함수
 	void SetJob(std::string);
-	std::string GetJob();
+	std::string GetChJob();
 
 	//인벤토리 반환 함수(없어도 inventory 목록 출력 가능한가?)
 
