@@ -53,6 +53,9 @@ void battle() {
 
 			player->ChExpUp(50);
 			player->SetGold(gold);
+
+			cout << "\n3초후 자동으로 넘어갑니다.";
+			Sleep(3000);
 			delete monster;  // 몬스터 메모리 해제
 			return;  // 전투 종료
 		}
@@ -67,7 +70,10 @@ void battle() {
 	// 플레이어 사망 시 게임 오버 처리
 	if (player->GetChHP() <= 0) {
 		cout << "플레이어가 사망했습니다. 게임 오버!" << endl;
+		cout << "\n3초후 자동으로 넘어갑니다.";
+		Sleep(3000);
 		delete monster;
+
 	}
 }
 
@@ -89,7 +95,7 @@ void bossBattle() {
 		// 플레이어 공격
 		cout << "\n플레이어가 " << boss->getName() << " 를 공격합니다!" << endl;
 		boss->takeDamage(player->GetChAttack());
-
+		Sleep(700);
 		// 보스 사망 체크 → 엔딩
 		if (boss->getHealth() <= 0) {
 			cout << boss->getName() << " 처치!" << endl;
@@ -104,6 +110,7 @@ void bossBattle() {
 		cout << boss->getName() << " 이 반격합니다!" << endl;
 		player->ChHPUpDown(-boss->getAttack());
 		cout << "현재 HP: " << player->GetChHP() << endl;
+		Sleep(700);
 	}
 
 	// 플레이어 사망 처리

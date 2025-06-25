@@ -103,6 +103,11 @@ void GameManager::StartGame() {
 	ShowCharacterStatus();
 
 	while (true) {
+		system("cls");
+		image.leaf();
+		SetImageUI();
+		ShowCharacterStatus();
+
 		std::cout << "\n=== 메뉴 ===\n1. 전투 시작\n2. 상태 확인\n3. 종료\n4. 상점 방문\n선택: ";
 		int menu;
 		std::cin >> menu;

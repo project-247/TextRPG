@@ -23,6 +23,7 @@ void Shop::LoadItemsForJob(const std::string& job) {
 }
 
 void Shop::DisplayItems() const {
+    
     std::cout << "\n[판매 목록]\n";
     for (size_t i = 0; i < stock.size(); ++i) {
         std::cout << i + 1 << ". " << stock[i].getName()
