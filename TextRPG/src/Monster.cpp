@@ -1,5 +1,6 @@
 #pragma once
 #include "Monster.h"
+#include "Image.h"
 
 
 string Monster::getName() {
@@ -19,10 +20,19 @@ int Monster::getAttack() {
 
 void Monster::takeDamage(int damage)
 {
+	Image* image = new Image();
 	MonsterHealth -= damage;
 	
 	if (MonsterHealth <= 0){
 		system("cls");
+		//system("cls"); 밑에 적어주세요
+		image->Slime(); //상황에 맞는 이미지로 변경 예정
+		//전체 메뉴창 출력
+		image->RenderSystemUI();
+		//우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
+		image->RenderMenu(60, 15);
+		//Text RPG 이미지 출력 >> 창 아래로 커서 이동
+		image->Loading2(60, 3);
 		MonsterHealth = 0;
 		cout << MonsterName << "이(가)" << damage << "의 피해를 입었습니다. 남은 체력: " << MonsterHealth << endl;
 		cout << MonsterName << "을(를) 처리했습니다!";
