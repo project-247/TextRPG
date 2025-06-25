@@ -45,7 +45,7 @@ void battle() {
 		Sleep(700);
 		// 몬스터 사망 체크
 		if (monster->getHealth() <= 0) {
-			cout << monster->getName() << " 처치!" << endl;
+			cout << monster->getName() << "\033[32m 처치!\033[0m" << endl;
 
 			// 전투 보상 지급 (경험치 + 골드)
 			int gold = (rand() % 11) + 10;  // 10~20 골드 랜덤
@@ -54,8 +54,8 @@ void battle() {
 			player->ChExpUp(50);
 			player->SetGold(gold);
 
-			cout << "\n3초후 자동으로 넘어갑니다.";
-			Sleep(3000);
+			cout << "\n5초후 자동으로 넘어갑니다.";
+			Sleep(5000);
 			delete monster;  // 몬스터 메모리 해제
 			return;  // 전투 종료
 		}
