@@ -5,6 +5,7 @@
 #include "Character.h"//헤더에 있는데 또 가져오나요?//오류
 #include "Shop.h"
 #include "NowUser.h"
+
 #define NOMINMAX
 #include <windows.h> // 커서 위치 조작용
 
@@ -59,7 +60,7 @@ void GameManager::CreateCharacter() {
 	std::string name = getValidName();
 
 	while (true) {
-		std::cout << "고민하신 닉네임이 " << "\n\033[33m" << name << " \033[0m 맞습니까? (1. 예 / 2. 아니오): ";
+		std::cout << "고민하신 닉네임이 " << "\033[33m" << name << " \033[0m 맞습니까? (1. 예 / 2. 아니오): ";
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -111,7 +112,13 @@ void GameManager::StartGame() {
 		system("cls");
 		image.leaf();
 		SetImageUI();
-		image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+		image.ShowCharacterUI(character->GetChName(),
+			character->GetChLevel(),
+			character->GetChJob(),
+			character->GetChHP(),
+			character->RetInventory().ReturnNowWeapon().getName(),
+			character->GetChAttack(),
+			character->GetGold());
 		
 		//ShowCharacterStatus();
 
@@ -134,7 +141,13 @@ void GameManager::StartGame() {
 			system("cls");
 			image.leaf();
 			SetImageUI();
-			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+			image.ShowCharacterUI(
+				character->GetChName(),
+				character->GetChLevel(),
+				character->GetChJob(),
+				character->GetChHP(),
+				character->RetInventory().ReturnNowWeapon().getName(),
+				character->GetChAttack(), character->GetGold());
 			OpenShop();
 		}
 		else if (std::cin.fail()) {
@@ -155,20 +168,6 @@ void GameManager::SelectJob() {
 	while (character->GetChJob() == "무직") {
 		std::cout << "직업을 선택해주세요!\033[1m\n\n 1. 전사\n 2. 궁수\n 3. 도적\n 4. 무직\033[0m\n\n 내 선택: ";
 		std::cin >> input;
-
-		if (cin.fail()) {
-			std::cin.clear();
-			SetImageUI();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			system("cls");
-			//system("cls"); 밑에 적어주세요
-			image.leaf();
-			SetImageUI();
-			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
-
-			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다.\n\n";
-			continue;
-		}
 
 		if (input > 0 && input < 5) {
 			std::cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
@@ -194,6 +193,20 @@ void GameManager::SelectJob() {
 		}
 		else {
 			std::cout << "유효하지 않은 직업 번호입니다. 다시 선택해주세요.\n";
+		}
+
+		if (cin.fail()) {
+			std::cin.clear();
+			SetImageUI();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			system("cls");
+			//system("cls"); 밑에 적어주세요
+			image.leaf();
+			SetImageUI();
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
+			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다.\n\n";
+			continue;
 		}
 	}
 }
@@ -234,7 +247,7 @@ void GameManager::OpenShop() {
 		/*ShowCharacterStatus();*/
 		std::cout << "\n=== 상점 ==="<< " \033[33m" << character->GetGold() << "\033[0m 골드 보유\n\n";
 		shop.DisplayItems();
-		std::cout << "\n구매할 아이템 번호를 입력하세요 (0: 나가기): ";
+		std::cout << "\n구매할 아이템 번호를 입력하세요 (7: 나가기): ";
 
 		int choice;
 		std::cin >> choice;
