@@ -6,8 +6,8 @@
 #include "Shop.h"
 #include "NowUser.h"
 
-//#define NOMINMAX
-//#include <windows.h> // 커서 위치 조작용
+#define NOMINMAX
+#include <windows.h> // 커서 위치 조작용
 
 GameManager::GameManager() {}
 
@@ -38,11 +38,11 @@ std::string getValidName() {
 	return input;
 }
 
-// 콘솔 커서 위치 이동 함수
-//void moveCursor(int x, int y) {
-//	COORD pos = { (SHORT)x, (SHORT)y };
-//	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
-//}
+ /*콘솔 커서 위치 이동 함수*/
+void moveCursor(int x, int y) {
+	COORD pos = { (SHORT)x, (SHORT)y };
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+}
 
 void GameManager::CreateCharacter() {
 	int input;
@@ -116,7 +116,7 @@ void GameManager::SelectJob() {
 	int input, input2;
 	Character* character = Character::NewCharacter();
 
-	while (character->GetJob() == "무직") {
+	while (character->GetChJob() == "무직") {
 		std::cout << "직업을 선택하세요\n1. 전사 2. 궁수 3. 도적 4. 무직\n선택: ";
 		std::cin >> input;
 
@@ -183,7 +183,7 @@ void GameManager::OpenShop() {
 	Character* player = Character::NewCharacter();
 	Shop shop;
 
-	shop.LoadItemsForJob(player->GetJob());
+	shop.LoadItemsForJob(player->GetChJob());
 
 	while (true) {
 		std::cout << "\n=== 상점 ===" << std::endl;
