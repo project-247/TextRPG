@@ -56,7 +56,7 @@ void Image::Slime() {
 │                #--;!!*****!!!!!!!!!!!!!!;~ @$
 │                 ,~$!,:;!!!!!*****!!!;~.=$;,
 │                    .--~==$$####$$==*---)";
-    moveCursor(0, SCREEN_Y + 3); // 창 아래로 커서 이동
+    moveCursor(0, SCREEN_Y + 1); // 창 아래로 커서 이동
 }
 
 void Image::Mimic() {
@@ -86,7 +86,7 @@ void Image::Mimic() {
 │                               ;#=*;:~~~~~~:~:;
 │                                ,*$==*;;;;!!;,
 │                                   .,,,,..)";
-    moveCursor(0, SCREEN_Y + 3); // 창 아래로 커서 이동
+    moveCursor(0, SCREEN_Y + 1); // 창 아래로 커서 이동
 }
 
 void Image::Golem() {
@@ -118,7 +118,7 @@ void Image::Golem() {
 │  $$!##!!@@    ~,~~:$##@@@@      ......,@@@@$  .*#@@@#!*@@
 │  ,#=!*@@:    .;~,,,-!@@@@@#~    .....-=@@@@@!  .!@$###:;
 │    ..,.      =!!!!!!=@@@@@@@:   $!!!!$#@@@@@@,    ,,.)";
-    moveCursor(0, SCREEN_Y + 3); // 창 아래로 커서 이동
+    moveCursor(0, SCREEN_Y + 1); // 창 아래로 커서 이동
 }
 
 void Image::Bencie() {
@@ -150,7 +150,7 @@ void Image::Bencie() {
 │        ~@@@@;,,,-##$$==**!*==-,         ,,!*;~-
 │          ..       -*#$====-.                .
 │                      -~~)";
-    moveCursor(0, SCREEN_Y + 3); // 창 아래로 커서 이동
+    moveCursor(0, SCREEN_Y + 1); // 창 아래로 커서 이동
 }
 
 void Image::ReturnInputImage(std::string name)
@@ -204,7 +204,7 @@ void Image::Loading2(int x, int y) {
     std::cout << R"(                                                                                    )" << std::endl;
     moveCursor(x, y + 8);
     std::cout << R"(=================================================================================   )" << std::endl;
-    moveCursor(0, SCREEN_Y + 3); // 창 아래로 커서 이동
+    moveCursor(0, SCREEN_Y + 1); // 창 아래로 커서 이동
 }
 
 // 테두리 네모 창 출력
@@ -250,7 +250,7 @@ void Image::RenderMenu() {
     std::cout << R"(│                                                                              │)";
     moveCursor(60, 25);
     std::cout << R"(└------------------------------------------------------------------------------┘)";
-    moveCursor(0, SCREEN_Y + 2);
+    moveCursor(0, SCREEN_Y + 1);
 
 }
 
@@ -271,7 +271,7 @@ void Image::ShowCharacterUI(std::string name, int level, std::string job, int hp
     std::cout << "공격력 : " << attack;
     moveCursor(63, 23);
     std::cout << "소지금 : " << gold;
-    moveCursor(0, SCREEN_Y + 2);
+    moveCursor(0, SCREEN_Y + 1);
 }
 
 void Image::ShowNowUI(std::string str1, std::string str2)
@@ -280,7 +280,7 @@ void Image::ShowNowUI(std::string str1, std::string str2)
     std::cout << str1;
     moveCursor(63, 18);
     std::cout << str2;
-    moveCursor(0, SCREEN_Y + 2);
+    moveCursor(0, SCREEN_Y + 1);
 }
 
 

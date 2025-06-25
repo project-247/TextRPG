@@ -19,6 +19,8 @@ void Item::use(Character* player) {
         std::cerr << "Error: 캐릭터가 없습니다.\n";
         return;
     }
+        srand(time(0));
+        int a1 = rand() % 450 + 50;
 
     switch (type) {
     case ItemType::HEAL:
@@ -32,9 +34,8 @@ void Item::use(Character* player) {
         break;
 
     case ItemType::GOLD:
-        srand(time(0));
-        player->SetGold((rand() % 450 ) + 50 );
-        std::cout << (rand() % 450) + 50 << "골드 획득!\n";
+        player->SetGold(a1);
+        std::cout << a1 << "골드 획득!\n";
         break;
 
     default:

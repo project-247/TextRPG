@@ -77,7 +77,6 @@ bool Shop::BuyItem(int index, Character* player) {
     std::cout << "\033[32m" << item.getName() << "\033[0m 를 구매했습니다!\n";
     std::cout << "\n\n \033[36m계속하려면 아무키나 누르세요...\033[0m";
 
-    _getch();
     system("cls");
     //모코코 출력
     image.leaf();
@@ -89,10 +88,13 @@ bool Shop::BuyItem(int index, Character* player) {
     image.Loading2(60, 3);
     image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
 
+    _getch();
 // ---------------------------------------------------------------------------------------------------------------
 
     if (item.getType() == ItemType::HEAL || item.getType() == ItemType::BOOST || item.getType() == ItemType::GOLD) {
         item.use(player);  // 즉시 사용
+        image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
     }
     else {
         // 무기나 기타 아이템은 인벤토리에 추가

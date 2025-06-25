@@ -51,7 +51,7 @@ void Character::SetChName(std::string UName) {
 
 //LevelUp()시 경험치 max 초기화 메서드
 void Character::MaxUp() {
-	int maxEXP[10] = { 0, 10, 30, 50, 70, 100, 150, 200, 250, 300 }; // now Level에서 level+1레벨이 되기 위한 경험치
+	int maxEXP[10] = { 0, 30, 70, 120, 170, 230, 290, 350, 410, 500 }; // now Level에서 level+1레벨이 되기 위한 경험치
 	if (ChLevel > 1 && ChLevel < 10) {
 		ChMax = maxEXP[ChLevel];
 	}
