@@ -29,7 +29,7 @@ std::string GameManager::getValidName() {
 		if (blank == "") {
 			system("cls");
 			//system("cls"); 밑에 image.Slime();랑 SetImageUI(); 적어주세요
-			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
 			std::cout << "\033[31m[ERROR] \033[0m \033[1m이름은 공백일 수 없습니다. 다시 입력해주세요.\033[0m\n\n";
 		}
@@ -64,7 +64,7 @@ void GameManager::CreateCharacter() {
 		if (input == 1) {
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
 			character->SetChName(name);
 			std::cout << "환영합니다, " << character->GetChName() << "님!\n\n" << std::endl;
@@ -79,7 +79,7 @@ void GameManager::CreateCharacter() {
 		{
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
 			name = getValidName();
 		}
@@ -88,7 +88,7 @@ void GameManager::CreateCharacter() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
@@ -96,7 +96,7 @@ void GameManager::CreateCharacter() {
 }
 
 void GameManager::StartGame() {
-	image.Slime(); //새싹으로 변경 예정
+	image.leaf(); //새싹으로 변경 예정
 	SetImageUI();
 	CreateCharacter();
 	SelectJob();
@@ -144,7 +144,7 @@ void GameManager::SelectJob() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			image.leaf(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
 			
 			continue;

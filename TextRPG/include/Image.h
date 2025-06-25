@@ -33,5 +33,6 @@ public:
 	//우측 메뉴 출력
 	void RenderMenu(int x, int y);
 
+	void leaf();
 };
 
