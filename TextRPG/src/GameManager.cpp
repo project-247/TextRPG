@@ -100,7 +100,7 @@ void GameManager::StartGame() {
 	SetImageUI();
 	CreateCharacter();
 	SelectJob();
-	ShowCharacterStatus();
+	/*ShowCharacterStatus();*/
 
 	while (true) {
 		system("cls");

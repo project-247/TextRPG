@@ -1,6 +1,9 @@
 ﻿
 #include "Shop.h"
 #include <iostream>
+#include <random>
+#include <algorithm>
+#include <numeric>
 
 Shop::Shop() {
     // 기본 공용 아이템 초기화
@@ -10,14 +13,32 @@ Shop::Shop() {
 }
 
 void Shop::LoadItemsForJob(const std::string& job) {
-    // 직업별 무기 데이터 로드 (WeaponMap 가정)
+    stock.clear();
     const auto& weaponMap = WeaponMap::getWeaponData();
-    auto it = weaponMap.find(job);
-    if (it != weaponMap.end()) {
-        stock = it->second;
+    if (job == "무직") {
+        // 모든 직업 무기를 한데 모아서 랜덤 2개 선택
+        std::vector<Item> allWeapons;
+        for (const auto& pair : weaponMap) {
+            allWeapons.insert(allWeapons.end(), pair.second.begin(), pair.second.end());
+        }
+        // 인덱스 벡터 생성 후 섞기
+        std::vector<int> indices(allWeapons.size());
+        std::iota(indices.begin(), indices.end(), 0);
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(indices.begin(), indices.end(), g);
+        int pickCount = std::min(2, (int)allWeapons.size());
+        for (int i = 0; i < pickCount; ++i) {
+            stock.push_back(allWeapons[indices[i]]);
+        }
     }
-
-    // 공용 아이템 다시 추가
+    else {
+        auto it = weaponMap.find(job);
+        if (it != weaponMap.end()) {
+            stock = it->second; // 해당 직업 무기 전부 추가
+        }
+    }
+    // 공용 아이템 추가
     stock.push_back(Item("힐 포션", ItemType::HEAL, 50, 100));
     stock.push_back(Item("힘 포션", ItemType::BOOST, 10, 120));
     stock.push_back(Item("골드 상자", ItemType::GOLD, 500, 100));
