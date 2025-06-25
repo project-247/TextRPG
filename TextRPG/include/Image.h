@@ -16,5 +16,15 @@ public:
 	
 	void Loading();
 
+	void Slime();
+
+	void Mimic();
+
+	void Golem();
+
+	void Bencie();
+
+	void SlimeImage();
+
 };
 
