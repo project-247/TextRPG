@@ -5,7 +5,13 @@
 
 using namespace std;
 
+
+
+
+
 int main() {
+	system("mode con: cols=160 lines=60");
+	Sleep(1000);
 	GameManager game;
 
 	Image image;
@@ -15,7 +21,7 @@ int main() {
 	cout << "\033[47m 게임 시작 준비 완료! 　\033[0m\n\n" << endl;
 	
 	while (1) {
-	cout << "전체화면으로 변경 후 아무 키나 눌러 계속하세요...";
+	cout << "아무 키나 눌러 계속하세요...";
 
 		if (_getch()) {
 			break;
