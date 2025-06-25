@@ -24,7 +24,6 @@ public:
 
 	void Bencie();
 
-	void SlimeImage();
 
 };
 
