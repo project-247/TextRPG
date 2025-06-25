@@ -228,13 +228,26 @@ void GameManager::OpenShop() {
 		std::cin >> choice;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
-		if (choice == 0) {
+		if (choice == 7) { // 번호 변경 요망
 			std::cout << "상점 방문을 종료합니다.\n";
 			break;
 		}
 
 		if (choice < 1 || choice > shop.GetStockSize()) {
-			std::cout << "잘못된 번호입니다.\n";
+			std::cin.fail();
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "[ ERROR ] 잘못된 번호입니다.\n";
+			std::cout << "\n\n \033[36m계속하려면 아무키나 누르세요...\033[0m";
+			system("cls");
+			//모코코 출력
+			image.leaf();
+			//전체 메뉴창 출력
+			image.RenderSystemUI();
+			//우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
+			image.RenderMenu(60, 15);
+			//Text RPG 이미지 출력 >> 창 아래로 커서 이동
+			image.Loading2(60, 3);
 			continue;
 		}
 

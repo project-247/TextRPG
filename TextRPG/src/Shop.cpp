@@ -38,6 +38,12 @@ bool Shop::BuyItem(int index, Character* player) {
         std::cout << "잘못된 번호입니다.\n";
         return false;
     }
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        system("cls");
+    }
+
     Item& item = stock[index - 1];
     int price = item.getPrice();
 
