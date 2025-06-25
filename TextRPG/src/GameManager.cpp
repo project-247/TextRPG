@@ -11,7 +11,10 @@ GameManager::GameManager() {}
 std::string getValidName() {
 	std::string input;
 	while (true) {
-		std::cout << "캐릭터 이름을 입력하세요: ";
+		std::cout << "================================" << endl;
+		std::cout << "【  캐릭터 이름을 입력하세요  】 " << endl;
+		std::cout << "================================" << endl;
+		std::cout << "Name : ";
 		std::getline(std::cin, input);
 
 		std::string blank = "";
@@ -38,7 +41,7 @@ void GameManager::CreateCharacter() {
 	std::string name = getValidName();
 
 	while (true) {
-		std::cout << name <<" 맞습니까? (1. 예 / 2. 아니오): ";
+		std::cout<< "\n" << name << " 맞습니까? (1. 예 / 2. 아니오): ";
 		std::cin >> input;
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -47,9 +50,10 @@ void GameManager::CreateCharacter() {
 			character->SetChName(name);
 			std::cout << "환영합니다, " << character->GetChName() << "님!" << std::endl;
 
-			std::cout << "초기 상태 → 레벨: " << character->GetChLevel()
-				<< ", 체력: " << character->GetChHP()
-				<< ", 공격력: " << character->GetChAttack() << std::endl;
+			std::cout << "※초기 상태※\n" << endl;
+			std::cout << "레　벨: "  << character->GetChLevel() << " Level" << std::endl;
+			std::cout << "체　력: " << character->GetChHP() << " HP" << std::endl;
+			std::cout << "공격력: " << character->GetChAttack() << " ATK" << std::endl;
 			break;
 		}
 		else if (input == 2)
@@ -109,6 +113,7 @@ void GameManager::SelectJob() {
 		if (cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			system("cls");
 			
 			continue;
 		}
