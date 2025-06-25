@@ -65,14 +65,28 @@ void battle() {
 			player->ChExpUp(50);
 			player->SetGold(gold);
 
+			image->moveCursor(0, 36);
 			cout << "\n5초후 자동으로 넘어갑니다.";
-			Sleep(5000);
+			Sleep(1000);
+			image->moveCursor(0, 36);
+			cout << "\n4초후 자동으로 넘어갑니다.";
+			Sleep(1000);
+			image->moveCursor(0, 36);
+			cout << "\n3초후 자동으로 넘어갑니다.";
+			Sleep(1000);
+			image->moveCursor(0, 36);
+			cout << "\n2초후 자동으로 넘어갑니다.";
+			Sleep(1000);
+			image->moveCursor(0, 36);
+			cout << "\n1초후 자동으로 넘어갑니다.";
+			Sleep(1000);
+
 			delete monster;  // 몬스터 메모리 해제
 			return;  // 전투 종료
 		}
 
 		// 몬스터 반격
-		cout << monster->getName() << " 이 반격합니다!" << endl;
+		cout <<"\n" << monster->getName() << " 이 반격합니다!" << endl;
 		player->ChHPUpDown(-monster->getAttack());
 		cout << "현재 HP: " << player->GetChHP() << endl;
 		Sleep(700);
