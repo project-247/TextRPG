@@ -4,6 +4,7 @@
 class BossDragon : public Monster {
 public:
 	BossDragon(int level) {
+		MonsterName = "보스 드래곤";
 		// 체력: (레벨×20×1.5) ~ (레벨×30×1.5)More actions
 		int minHP = level * 30;
 		int maxHP = level * 45;

@@ -5,6 +5,11 @@
 //캐릭터 정적 변수 초기화 (외부에서 정의)
 Character* Character::Instance = nullptr;
 
+Inventory& Character::RetInventory()
+{
+	return *inventory;
+}
+
 //캐릭터 생성 메서드
 Character* Character::NewCharacter() {
 	//객체가 없다면 생성

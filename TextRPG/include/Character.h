@@ -20,14 +20,10 @@ private:
 	int MaxHP = 200;
 	//Item UserWeapon;			//소지 무기 중 공격력이 가장 강한 무기
 
-	std::string JobName = "무직";  // 직업 저장용
-	//std::string EquippedWeaponName = ""; //무기 이름
-	//int EquippedWeaponAttack = 0;
+	std::string JobName = "무직";  // 직업 저장
 
-	// 무기 전체 데이터맵
+	// 무기 전체 데이터맵 가져오기
 	const std::map<std::string, std::vector<Item>>& weaponData;
-	// 해당 직업과 일치하는 무기 리스트 //오류 발생
-	//std::vector<Item> ClassrWeapons;
 
 	//캐릭터 생성자 (싱글톤)
 	Character() : weaponData(WeaponMap::getWeaponData()) {}
@@ -50,6 +46,9 @@ public:
 		delete inventory;
 		inventory = nullptr;
 	}
+
+	//인벤토리 반환
+	Inventory& RetInventory();
 
 	//캐릭터 생성 메서드
 	static Character* NewCharacter();

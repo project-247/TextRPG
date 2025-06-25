@@ -10,6 +10,7 @@
 
 GameManager::GameManager() {}
 
+
 std::string GameManager::getValidName() {
 	std::string input;
 	while (true) {
@@ -31,6 +32,9 @@ std::string GameManager::getValidName() {
 			//system("cls"); 밑에 image.Slime();랑 SetImageUI(); 적어주세요
 			image.Slime(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
+			//ShowCharacterUI() 대신 ShowNowUI() 사용
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+
 			std::cout << "\033[31m[ERROR] \033[0m \033[1m이름은 공백일 수 없습니다. 다시 입력해주세요.\033[0m\n\n";
 		}
 		else {
@@ -45,7 +49,7 @@ void GameManager::SetImageUI() {
 	image.RenderSystemUI();
 
 	//우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
-	image.RenderMenu(60, 15);
+	image.RenderMenu();
 
 	//Text RPG 이미지 출력 >> 창 아래로 커서 이동
 	image.Loading2(60, 3);
@@ -62,17 +66,15 @@ void GameManager::CreateCharacter() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if (input == 1) {
+			character->SetChName(name);
 			system("cls");
 			//system("cls"); 밑에 적어주세요
 			image.Slime(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
-			character->SetChName(name);
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+			
 			std::cout << "환영합니다, " << character->GetChName() << "님!\n\n" << std::endl;
 
-			std::cout << "※초기 상태※\n" << endl;
-			std::cout << "레　벨: "  << character->GetChLevel() << " Level" << std::endl;
-			std::cout << "체　력: " << character->GetChHP() << " HP" << std::endl;
-			std::cout << "공격력: " << character->GetChAttack() << " ATK" << std::endl;
 			break;
 		}
 		else if (input == 2)
@@ -81,6 +83,9 @@ void GameManager::CreateCharacter() {
 			//system("cls"); 밑에 적어주세요
 			image.Slime(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
+			//ShowCharacterUI() 대신 ShowNowUI() 사용
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+
 			name = getValidName();
 		}
 		else if (std::cin.fail()) {
@@ -90,6 +95,9 @@ void GameManager::CreateCharacter() {
 			//system("cls"); 밑에 적어주세요
 			image.Slime(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
+			//ShowCharacterUI() 대신 ShowNowUI() 사용
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
 	}
@@ -98,6 +106,7 @@ void GameManager::CreateCharacter() {
 void GameManager::StartGame() {
 	image.Slime(); //새싹으로 변경 예정
 	SetImageUI();
+	image.ShowNowUI("환영합니다 유저님","캐릭터 생성중 (임시 내용)"); //우측 메뉴 창 안에 정보 출력
 	CreateCharacter();
 	SelectJob();
 	ShowCharacterStatus();
@@ -146,6 +155,7 @@ void GameManager::SelectJob() {
 			//system("cls"); 밑에 적어주세요
 			image.Slime(); //상황에 맞는 이미지로 변경 예정
 			SetImageUI();
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
 			
 			continue;
 		}

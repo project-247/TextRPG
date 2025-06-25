@@ -40,6 +40,7 @@ public:
 
 	virtual int KillMonsterXP(); //몬스터를 처리했을때 나오는 경험치
 
+	string ReturnMSName(); //몬스터 이름 반환
 
 	virtual ~Monster(){
 	}
