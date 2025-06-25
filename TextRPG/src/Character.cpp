@@ -5,6 +5,11 @@
 //캐릭터 정적 변수 초기화 (외부에서 정의)
 Character* Character::Instance = nullptr;
 
+Inventory& Character::RetInventory()
+{
+	return *inventory;
+}
+
 //캐릭터 생성 메서드
 Character* Character::NewCharacter() {
 	//객체가 없다면 생성
@@ -55,9 +60,9 @@ void Character::MaxUp() {
 //LevelUp()시 체력과 공격력 초기화 메서드
 void Character::UpdateLevelStats() {
 	MaxUp(); //LevelUp()시 경험치 max 초기화 메서드 > 오류안나겟지?..
-	ChHP = MaxHP + 50;          // 체력 전체 회복 + 20상승
+	ChHP = MaxHP + 20;          // 체력 전체 회복 + 20상승
 	MaxHP = ChHP;                           // **체력**: `(현재 체력 + (레벨 × 20))
-	ChAttack = 30 + (ChLevel*15);    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
+	ChAttack = 30 + (ChLevel * 5);    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
 }
 
 //체력 변동 메서드
@@ -88,7 +93,7 @@ void Character::SetGold(long long a) {
 
 //현재 캐릭터 상태 확인 메서드
 void Character::NowCharacter() {
-	
+
 	std::cout << "\n[현재 상태]" << std::endl;
 	std::cout << "이　름 : " << ChName << std::endl;
 	std::cout << "레　벨 : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;

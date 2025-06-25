@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 
 class Image {
 public:
@@ -7,12 +8,13 @@ public:
 	const int SCREEN_Y = 30;
 
 	//커서 이동 메서드
-	void moveCursor(int, int);
+	static void moveCursor(int, int);
 
 	void Cat1();
 
 	void cat2();
-	
+
+	void leaf();
 
 	void Slime();
 
@@ -21,6 +23,9 @@ public:
 	void Golem();
 
 	void Bencie();
+
+	//몬스터 이름을 입력받아 함수를 실행하는 함수
+	void ReturnInputImage(std::string);
 
 	//지연 있는 TEXT RPG
 	void Loading1();
@@ -31,8 +36,12 @@ public:
 	void RenderSystemUI();
 
 	//우측 메뉴 출력
-	void RenderMenu(int x, int y);
+	void RenderMenu();
 
-	void leaf();
+	//우측 메뉴에 넣을 내용 출력(최대 6줄)
+	void ShowCharacterUI(std::string name, int level, std::string job, int hp, std::string weapon, int attack, long long gold);
+
+	//우측 메뉴에 넣을 최대 두 줄 문자열
+	void ShowNowUI(std::string, std::string);
 };
 

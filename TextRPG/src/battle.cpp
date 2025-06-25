@@ -1,5 +1,6 @@
 ﻿#include "battle.h"
 #include "Character.h"
+#include "Image.h"
 #include "MS_Golem.h"   // 일반 몬스터 헤더들
 #include "MS_Slime.h"
 #include "MS_Mimic.h"
@@ -16,8 +17,9 @@ void battle() {
 	// 매 전투마다 시드 설정 (랜덤 값 생성)
 	srand((unsigned int)time(NULL));
 
-	Character* player = Character::NewCharacter();  // 플레이어 객체
+	Character* player = Character::NewCharacter();
 	int level = player->GetChLevel();  // 현재 레벨 확인
+	Image* image = new Image();
 
 	// 랜덤으로 일반 몬스터 선택 (4종류 중 선택)
 	int monsterType = rand() % 4;
@@ -32,6 +34,15 @@ void battle() {
 	else
 		monster = new Bencie(level);
 
+	system("cls");
+	image->ReturnInputImage(monster->ReturnMSName()); //몬스터에 맞는 이미지로 변경됨
+	//전체 메뉴창 출력
+	image->RenderSystemUI();
+	//우측 메뉴창 출력
+	image->RenderMenu();
+	image->Loading2(60, 3);
+	image->ShowNowUI("전투중입니다.", "화이팅 '~' (임시 내용)");
+	
 	// 몬스터 등장 알림
 	cout << "\n몬스터 등장! " << monster->getName()
 		<< " (HP: " << monster->getHealth()
@@ -75,6 +86,9 @@ void battle() {
 		delete monster;
 
 	}
+
+	delete image;
+	image = nullptr;
 }
 
 // 보스전 전투 함수

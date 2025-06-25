@@ -17,6 +17,8 @@ public:
     int GetStockSize() const;
 
 private:
+    //캐릭터 객체 불러오기
+    Character* character = Character::NewCharacter();
     std::vector<Item> stock;
     Image image;
 };

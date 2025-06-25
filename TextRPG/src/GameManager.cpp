@@ -2,7 +2,7 @@
 #include "battle.h"  // ✅ 전투 함수가 전역 함수이므로 반드시 포함
 #include <iostream>
 #include <limits>
-#include "Character.h"//헤더에 있는데 또 가져오나요?
+#include "Character.h"//헤더에 있는데 또 가져오나요?//오류
 #include "Shop.h"
 #include "NowUser.h"
 #define NOMINMAX
@@ -28,9 +28,11 @@ std::string GameManager::getValidName() {
 
 		if (blank == "") {
 			system("cls");
-			//system("cls"); 밑에 image.Slime();랑 SetImageUI(); 적어주세요
-			image.leaf(); //상황에 맞는 이미지로 변경 예정
+			//system("cls"); 밑에 반드시 작성
+			image.leaf();
 			SetImageUI();
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+
 			std::cout << "\033[31m[ERROR] \033[0m \033[1m이름은 공백일 수 없습니다. 다시 입력해주세요.\033[0m\n\n";
 		}
 		else {
@@ -44,8 +46,8 @@ void GameManager::SetImageUI() {
 	//전체 메뉴창 출력
 	image.RenderSystemUI();
 
-	//우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
-	image.RenderMenu(60, 15);
+	//우측 메뉴창 출력
+	image.RenderMenu();
 
 	//Text RPG 이미지 출력 >> 창 아래로 커서 이동
 	image.Loading2(60, 3);
@@ -53,7 +55,7 @@ void GameManager::SetImageUI() {
 
 void GameManager::CreateCharacter() {
 	int input;
-	Character* character = Character::NewCharacter();
+	//Character* character = Character::NewCharacter();
 	std::string name = getValidName();
 
 	while (true) {
@@ -62,25 +64,25 @@ void GameManager::CreateCharacter() {
 		std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 		if (input == 1) {
+			character->SetChName(name);
+
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.leaf(); //상황에 맞는 이미지로 변경 예정
+			image.leaf();
 			SetImageUI();
-			character->SetChName(name);
-			std::cout << "환영합니다, "<< "\033[33m" << character->GetChName() << "\033[0m님!\n\n" << std::endl;
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
 
-			/*std::cout << "※초기 상태※\n" << endl;
-			std::cout << "레　벨: "  << character->GetChLevel() << " Level" << std::endl;
-			std::cout << "체　력: " << character->GetChHP() << " HP" << std::endl;
-			std::cout << "공격력: " << character->GetChAttack() << " ATK" << std::endl; --- 상단 이미지에 스탯 출력할 예정 */ 
+			std::cout << "환영합니다, "<< "\033[33m" << character->GetChName() << "\033[0m님!\n\n" << std::endl;
 			break;
 		}
 		else if (input == 2)
 		{
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.leaf(); //상황에 맞는 이미지로 변경 예정
+			image.leaf();
 			SetImageUI();
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+
 			name = getValidName();
 		}
 		else if (std::cin.fail()) {
@@ -88,25 +90,30 @@ void GameManager::CreateCharacter() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.leaf(); //상황에 맞는 이미지로 변경 예정
+			image.leaf();
 			SetImageUI();
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
 	}
 }
 
 void GameManager::StartGame() {
-	image.leaf(); //새싹으로 변경 예정
+	image.leaf();
 	SetImageUI();
+	image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
 	CreateCharacter();
 	SelectJob();
-	/*ShowCharacterStatus();*/
+	//ShowCharacterStatus(); // 상태확인
 
 	while (true) {
 		system("cls");
 		image.leaf();
 		SetImageUI();
-		ShowCharacterStatus();
+		image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+		
+		//ShowCharacterStatus();
 
 		std::cout << "\n=== 메뉴 ===\n1. 전투 시작\n2. 상태 확인\n3. 종료\n4. 상점 방문\n선택: ";
 		int menu;
@@ -127,6 +134,7 @@ void GameManager::StartGame() {
 			system("cls");
 			image.leaf();
 			SetImageUI();
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
 			OpenShop();
 		}
 		else if (std::cin.fail()) {
@@ -142,7 +150,7 @@ void GameManager::StartGame() {
 
 void GameManager::SelectJob() {
 	int input, input2;
-	Character* character = Character::NewCharacter();
+	//Character* character = Character::NewCharacter();
 
 	while (character->GetChJob() == "무직") {
 		std::cout << "직업을 선택해주세요!\033[1m\n\n 1. 전사\n 2. 궁수\n 3. 도적\n 4. 무직\033[0m\n\n 내 선택: ";
@@ -154,8 +162,10 @@ void GameManager::SelectJob() {
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
 			//system("cls"); 밑에 적어주세요
-			image.leaf(); //상황에 맞는 이미지로 변경 예정
+			image.leaf();
 			SetImageUI();
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다.\n\n";
 			continue;
 		}
@@ -172,8 +182,10 @@ void GameManager::SelectJob() {
 			else if (input2 == 2) {
 				system("cls");
 				//system("cls"); 밑에 적어주세요
-				image.leaf(); //상황에 맞는 이미지로 변경 예정
+				image.leaf();
 				SetImageUI();
+				image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
 				std::cout << "직업 선택을 다시 합니다.\n";
 			}
 			else {
@@ -188,7 +200,7 @@ void GameManager::SelectJob() {
 
 void GameManager::ShowCharacterStatus() {
 	NowUser nowUser;
-	Character* character = Character::NewCharacter();
+//	Character* character = Character::NewCharacter();
 	nowUser.ReturnUser();
 
 	if (character->inventory)
@@ -198,9 +210,9 @@ void GameManager::ShowCharacterStatus() {
 }
 
 void GameManager::StartBattle() {
-	Character* player = Character::NewCharacter();
+	//Character* player = Character::NewCharacter();
 
-	if (player->GetChLevel() >= 10) {
+	if (character->GetChLevel() >= 10) {
 		StartBossBattle();  // ✅ GameManager 멤버 함수 호출
 	}
 	else {
@@ -213,14 +225,14 @@ void GameManager::StartBossBattle() {
 }
 
 void GameManager::OpenShop() {
-	Character* player = Character::NewCharacter();
+	//Character* player = Character::NewCharacter();
 	Shop shop;
 
-	shop.LoadItemsForJob(player->GetChJob());
+	shop.LoadItemsForJob(character->GetChJob());
 
 	while (true) {
 		/*ShowCharacterStatus();*/
-		std::cout << "\n=== 상점 ==="<< " \033[33m" << player->GetGold() << "\033[0m 골드 보유\n\n";
+		std::cout << "\n=== 상점 ==="<< " \033[33m" << character->GetGold() << "\033[0m 골드 보유\n\n";
 		shop.DisplayItems();
 		std::cout << "\n구매할 아이템 번호를 입력하세요 (0: 나가기): ";
 
@@ -251,6 +263,6 @@ void GameManager::OpenShop() {
 			continue;
 		}
 
-		shop.BuyItem(choice, player);
+		shop.BuyItem(choice, character);
 	}
 }

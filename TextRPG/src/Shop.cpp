@@ -84,10 +84,11 @@ bool Shop::BuyItem(int index, Character* player) {
     //전체 메뉴창 출력
     image.RenderSystemUI();
     //우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
-    image.RenderMenu(60, 15);
+    image.RenderMenu();
     //Text RPG 이미지 출력 >> 창 아래로 커서 이동
     image.Loading2(60, 3);
-    
+    image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
 // ---------------------------------------------------------------------------------------------------------------
 
     if (item.getType() == ItemType::HEAL || item.getType() == ItemType::BOOST || item.getType() == ItemType::GOLD) {
@@ -97,7 +98,6 @@ bool Shop::BuyItem(int index, Character* player) {
         // 무기나 기타 아이템은 인벤토리에 추가
         player->inventory->AddUserItem(item, player->GetChJob());
     }
-
 
     return true;
 }

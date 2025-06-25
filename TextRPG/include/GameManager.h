@@ -20,6 +20,8 @@ public:
 private:
 	//이미지 바로 출력 위해서 객체 생성
 	Image image;
+	//여기서 캐릭터 객체 생성
+	Character* character = Character::NewCharacter();
 
 	void CreateCharacter();
 	void SelectJob();

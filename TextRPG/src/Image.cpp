@@ -1,5 +1,4 @@
 ﻿#include "Image.h"
-#include <iostream>
 #include <Windows.h> // 커서 위치 조작용
 
 // 콘솔 커서 위치 이동 함수
@@ -123,7 +122,7 @@ void Image::Golem() {
 }
 
 void Image::Bencie() {
-    moveCursor(0,2);
+    moveCursor(0, 2);
     std::cout << R"(
 │                      ,,,,...        .
 │               , ,~~-~--,,,..
@@ -152,6 +151,26 @@ void Image::Bencie() {
 │          ..       -*#$====-.                .
 │                      -~~)";
     moveCursor(0, SCREEN_Y + 3); // 창 아래로 커서 이동
+}
+
+void Image::ReturnInputImage(std::string name)
+{
+    if (name == "귀여운슬라임")
+    {
+        Slime();
+    }
+    else if (name == "랜덤※박스 미믹")
+    {
+        Mimic();
+    }
+    else if (name == "덩치만 큰 골렘")
+    {
+        Golem();
+    }
+    else if (name == "노래못하는 벤시")
+    {
+        Bencie();
+    }
 }
 
 void Image::Loading1() {
@@ -208,30 +227,62 @@ void Image::RenderSystemUI() {
 }
 
 //우측 메뉴창
-void Image::RenderMenu(int x, int y) {
-    moveCursor(x, y);
+void Image::RenderMenu() {
+    moveCursor(60, 15);
     std::cout << R"(┌------------------------------------------------------------------------------┐)";
-    moveCursor(x, y + 1);
+    moveCursor(60, 16);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 2);
+    moveCursor(60, 17);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 3);
+    moveCursor(60, 18);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 4);
+    moveCursor(60, 19);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 5);
+    moveCursor(60, 20);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 6);
+    moveCursor(60, 21);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 7);
+    moveCursor(60, 22);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 8);
+    moveCursor(60, 23);
     std::cout << R"(│                                                                              │)";
-    moveCursor(x, y + 9);
+    moveCursor(60, 24);
+    std::cout << R"(│                                                                              │)";
+    moveCursor(60, 25);
     std::cout << R"(└------------------------------------------------------------------------------┘)";
     moveCursor(0, SCREEN_Y + 2);
 
-};
+}
+
+
+//우측 메뉴창에 넣을 캐릭터 정보
+void Image::ShowCharacterUI(std::string name, int level, std::string job, int hp, std::string weapon, int attack, long long gold) {
+    moveCursor(63, 17);
+    std::cout << "이름 : " << name;
+    moveCursor(63, 18);
+    std::cout << "레벨 : " << level;
+    moveCursor(63, 19);
+    std::cout << "직업 : " << job;
+    moveCursor(63, 20);
+    std::cout << "체력 : " << hp;
+    moveCursor(63, 21);
+    std::cout << "장착 무기 : " << weapon;
+    moveCursor(63, 22);
+    std::cout << "공격력 : " << attack;
+    moveCursor(63, 23);
+    std::cout << "소지금 : " << gold;
+    moveCursor(0, SCREEN_Y + 2);
+}
+
+void Image::ShowNowUI(std::string str1, std::string str2)
+{
+    moveCursor(63, 17);
+    std::cout << str1;
+    moveCursor(63, 18);
+    std::cout << str2;
+    moveCursor(0, SCREEN_Y + 2);
+}
+
 
 
 void Image::leaf() {
@@ -264,6 +315,5 @@ void Image::leaf() {
 │              ~;!$####################$!;~                  
 │           .:*$##########################$!~                
 │          -=$##############################$*-              
-│         -$##################################$~             
-)";
+│         -$##################################$~)";
 }
