@@ -2,16 +2,15 @@
 #include "battle.h"  // ✅ 전투 함수가 전역 함수이므로 반드시 포함
 #include <iostream>
 #include <limits>
-#include "Character.h"
+#include "Character.h"//헤더에 있는데 또 가져오나요?
 #include "Shop.h"
 #include "NowUser.h"
-
 #define NOMINMAX
 #include <windows.h> // 커서 위치 조작용
 
 GameManager::GameManager() {}
 
-std::string getValidName() {
+std::string GameManager::getValidName() {
 	std::string input;
 	while (true) {
 		std::cout << "================================" << endl;
@@ -29,6 +28,9 @@ std::string getValidName() {
 
 		if (blank == "") {
 			system("cls");
+			//system("cls"); 밑에 image.Slime();랑 SetImageUI(); 적어주세요
+			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			SetImageUI();
 			std::cout << "\033[31m[ERROR] \033[0m \033[1m이름은 공백일 수 없습니다. 다시 입력해주세요.\033[0m\n\n";
 		}
 		else {
@@ -38,10 +40,15 @@ std::string getValidName() {
 	return input;
 }
 
- /*콘솔 커서 위치 이동 함수*/
-void moveCursor(int x, int y) {
-	COORD pos = { (SHORT)x, (SHORT)y };
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+void GameManager::SetImageUI() {
+	//전체 메뉴창 출력
+	image.RenderSystemUI();
+
+	//우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
+	image.RenderMenu(60, 15);
+
+	//Text RPG 이미지 출력 >> 창 아래로 커서 이동
+	image.Loading2(60, 3);
 }
 
 void GameManager::CreateCharacter() {
@@ -56,6 +63,9 @@ void GameManager::CreateCharacter() {
 
 		if (input == 1) {
 			system("cls");
+			//system("cls"); 밑에 적어주세요
+			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			SetImageUI();
 			character->SetChName(name);
 			std::cout << "환영합니다, " << character->GetChName() << "님!\n\n" << std::endl;
 
@@ -68,18 +78,26 @@ void GameManager::CreateCharacter() {
 		else if (input == 2)
 		{
 			system("cls");
+			//system("cls"); 밑에 적어주세요
+			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			SetImageUI();
 			name = getValidName();
 		}
 		else if (std::cin.fail()) {
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
+			//system("cls"); 밑에 적어주세요
+			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			SetImageUI();
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
 	}
 }
 
 void GameManager::StartGame() {
+	image.Slime(); //새싹으로 변경 예정
+	SetImageUI();
 	CreateCharacter();
 	SelectJob();
 	ShowCharacterStatus();
@@ -122,8 +140,12 @@ void GameManager::SelectJob() {
 
 		if (cin.fail()) {
 			std::cin.clear();
+			SetImageUI();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			system("cls");
+			//system("cls"); 밑에 적어주세요
+			image.Slime(); //상황에 맞는 이미지로 변경 예정
+			SetImageUI();
 			
 			continue;
 		}
