@@ -18,10 +18,17 @@ public:
 	void StartGame();
 
 private:
+	//이미지 바로 출력 위해서 객체 생성
+	Image image;
+	//여기서 캐릭터 객체 생성
+	Character* character = Character::NewCharacter();
+
 	void CreateCharacter();
 	void SelectJob();
 	void ShowCharacterStatus();
 	void StartBattle();
 	void OpenShop();
 	void StartBossBattle();  // 보스 전투 호출만 담당
+	void SetImageUI();
+	std::string getValidName();
 };

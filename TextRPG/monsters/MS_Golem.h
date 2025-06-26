@@ -11,7 +11,7 @@ public:
 	Golem(int level) {
 		MonsterName = "µ¢Ä¡¸¸ Å« °ñ·½";
 		MonsterHealth = level * 150;
-		MonsterAttack = level * 20;
+		MonsterAttack = level * 7;
 		Experience = (level * 3) / 2;
 	}
 };

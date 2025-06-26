@@ -4,6 +4,8 @@
 #include "Item.h"
 #include "Inventory.h"
 #include "Character.h"
+#include <conio.h>
+#include "Image.h"
 
 class Shop {
 public:
@@ -15,5 +17,8 @@ public:
     int GetStockSize() const;
 
 private:
+    //캐릭터 객체 불러오기
+    Character* character = Character::NewCharacter();
     std::vector<Item> stock;
+    Image image;
 };

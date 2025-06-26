@@ -5,6 +5,11 @@
 //캐릭터 정적 변수 초기화 (외부에서 정의)
 Character* Character::Instance = nullptr;
 
+Inventory& Character::RetInventory()
+{
+	return *inventory;
+}
+
 //캐릭터 생성 메서드
 Character* Character::NewCharacter() {
 	//객체가 없다면 생성
@@ -19,6 +24,7 @@ Character* Character::NewCharacter() {
 void Character::ChExpUp(int exp) {   //입력 : 몬스터 처치 경험치
 	ChExperience += exp;
 	while (ChExperience >= ChMax) {
+		if (ChLevel >= 10) { break; }
 		LevelUp();
 	}
 }
@@ -46,7 +52,7 @@ void Character::SetChName(std::string UName) {
 
 //LevelUp()시 경험치 max 초기화 메서드
 void Character::MaxUp() {
-	int maxEXP[10] = { 0, 10, 30, 50, 70, 100, 150, 200, 250, 300 }; // now Level에서 level+1레벨이 되기 위한 경험치
+	int maxEXP[10] = { 0, 30, 70, 120, 170, 230, 290, 350, 410, 500 }; // now Level에서 level+1레벨이 되기 위한 경험치
 	if (ChLevel > 1 && ChLevel < 10) {
 		ChMax = maxEXP[ChLevel];
 	}
@@ -54,10 +60,10 @@ void Character::MaxUp() {
 
 //LevelUp()시 체력과 공격력 초기화 메서드
 void Character::UpdateLevelStats() {
-	MaxUp(); //LevelUp()시 경험치 max 초기화 메서드 > 오류안나겟지?..
-	ChHP = MaxHP + 20;          // 체력 전체 회복 + 20상승
+	MaxUp();
+	if (ChHP < MaxHP + 20) { ChHP = MaxHP + 20; }      // 체력 전체 회복 + 20상승
 	MaxHP = ChHP;                           // **체력**: `(현재 체력 + (레벨 × 20))
-	ChAttack = 30 + (ChLevel*5);    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
+	ChAttack = ChAttack + 5;    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
 }
 
 //체력 변동 메서드
@@ -88,7 +94,7 @@ void Character::SetGold(long long a) {
 
 //현재 캐릭터 상태 확인 메서드
 void Character::NowCharacter() {
-	
+
 	std::cout << "\n[현재 상태]" << std::endl;
 	std::cout << "이　름 : " << ChName << std::endl;
 	std::cout << "레　벨 : " << ChLevel << " (" << ChExperience << "/" << ChMax << ")" << std::endl;
@@ -125,7 +131,6 @@ void Character::SetJob(std::string job) {
 	}
 	else if (job == "무직") {
 	}
-	//UpdateLevelStats(); // 직업 변경시 스탯 업데이트 > 오류 발생 > 삭제
 }
 
 std::string Character::GetChJob()
@@ -142,7 +147,7 @@ void Character::equipWeapon()
 
 void Character::showEquippedWeapon()
 {
-	std::cout << "무기 : " << inventory->ReturnNowWeapon().getName() << " (공격력 +" << inventory->NowWeaponAttack() << ")" << std::endl;
+	std::cout << "무　기 : " << inventory->ReturnNowWeapon().getName() << " (공격력 +" << inventory->NowWeaponAttack() << ")" << std::endl;
 }
 
 //void SetEquippedWeaponName() {
