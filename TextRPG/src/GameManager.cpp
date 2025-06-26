@@ -271,9 +271,10 @@ void GameManager::OpenShop() {
 		}
 
 		if (choice < 1 || choice > shop.GetStockSize()) {
-			std::cin.fail();
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max()/*, '\n'*/);
+			if (std::cin.fail()) {
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
 			std::cout << "[ ERROR ] 잘못된 번호입니다.\n";
 			std::cout << "\n\n \033[36m 계속하려면 아무키나 누르세요...\033[0m";
 			_getch();
