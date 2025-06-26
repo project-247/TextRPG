@@ -55,13 +55,21 @@ void Shop::DisplayItems() const {
 // ---------------------------------------------------------------------------------------------------------------
 bool Shop::BuyItem(int index, Character* player) {
     
-    if (index < 1 || index >(int)stock.size()) {
+ /*   if (index < 1 || index >(int)stock.size()) {
+
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        system("cls");
+
         std::cout << "잘못된 번호입니다.\n";
         return false;
-    }
+    }*/
     if (std::cin.fail()) {
         std::cin.clear();
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다.\n\n";
+        std::cout << "\033[38;2;80;80;80m \n\n계속하려면 아무키를 눌러주세요.\033[0m";
+        _getch();
         system("cls");
     }
 
@@ -69,13 +77,27 @@ bool Shop::BuyItem(int index, Character* player) {
     int price = item.getPrice();
 
     if (player->GetGold() < price) {
-        std::cout << "골드가 부족합니다!\n";
+        std::cout << "\n골드가 부족합니다!\n";
+        std::cout << "\033[38;2;80;80;80m \n\n계속하려면 아무키를 눌러주세요.\033[0m";
+        _getch();
+        system("cls");
+        //모코코 출력
+        image.leaf();
+        //전체 메뉴창 출력
+        image.RenderSystemUI();
+        //우측 메뉴창 출력 >>인자 안 받는 방식으로 수정 예정
+        image.RenderMenu();
+        //Text RPG 이미지 출력 >> 창 아래로 커서 이동
+        image.Loading2(60, 3);
+        image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
         return false;
     }
 
     player->SetGold(-price);  // 골드 차감
     std::cout << "\033[32m" << item.getName() << "\033[0m 를 구매했습니다!\n";
     std::cout << "\n\n \033[36m계속하려면 아무키나 누르세요...\033[0m";
+    _getch();
+
 
     system("cls");
     //모코코 출력

@@ -166,7 +166,7 @@ void GameManager::StartGame() {
 
 void GameManager::SelectJob() {
 	int input, input2;
-	//Character* character = Character::NewCharacter();
+	//Character* character = Character::NewCharacter(); // -------------------------직업 숫자 잘못입력시 초기화 안되고 출력됨
 
 	while (character->GetChJob() == "무직") {
 		std::cout << "직업을 선택해주세요!\033[1m\n\n 1. 전사\n 2. 궁수\n 3. 도적\n 4. 무직\033[0m\n\n 내 선택: ";
@@ -271,11 +271,14 @@ void GameManager::OpenShop() {
 		}
 
 		if (choice < 1 || choice > shop.GetStockSize()) {
-			std::cin.fail();
-			std::cin.clear();
-			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-			std::cout << "[ ERROR ] 잘못된 번호입니다.\n";
-			std::cout << "\n\n \033[36m계속하려면 아무키나 누르세요...\033[0m";
+			if (std::cin.fail()) {
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			}
+			std::cout << "\n\n \033[31m 【 ERROR 】 \033[0m 잘못된 번호입니다.\n";
+			std::cout << "\n\n \033[38;2;80;80;80m 계속하려면 아무키나 누르세요...\033[0m";
+			_getch();
+
 			system("cls");
 			//모코코 출력
 			image.leaf();
