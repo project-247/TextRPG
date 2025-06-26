@@ -2,7 +2,7 @@
 #include "battle.h"  // ✅ 전투 함수가 전역 함수이므로 반드시 포함
 #include <iostream>
 #include <limits>
-#include "Character.h"//헤더에 있는데 또 가져오나요?//오류
+#include "Character.h"
 #include "Shop.h"
 #include "NowUser.h"
 
@@ -32,7 +32,7 @@ std::string GameManager::getValidName() {
 			//system("cls"); 밑에 반드시 작성
 			image.leaf();
 			SetImageUI();
-			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중");
 
 			std::cout << "\033[31m[ERROR] \033[0m \033[1m이름은 공백일 수 없습니다. 다시 입력해주세요.\033[0m\n\n";
 		}
@@ -82,7 +82,7 @@ void GameManager::CreateCharacter() {
 			//system("cls"); 밑에 적어주세요
 			image.leaf();
 			SetImageUI();
-			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중");
 
 			name = getValidName();
 		}
@@ -93,7 +93,7 @@ void GameManager::CreateCharacter() {
 			//system("cls"); 밑에 적어주세요
 			image.leaf();
 			SetImageUI();
-			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+			image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중");
 
 			std::cout << "\033[31m[ERROR] \033[0m잘못된 입력입니다. 다시 입력해주세요.\n";
 		}
@@ -104,7 +104,7 @@ void GameManager::StartGame() {
 	srand(time(0));
 	image.leaf();
 	SetImageUI();
-	image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
+	image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중");
 	CreateCharacter();
 	SelectJob();
 	//ShowCharacterStatus(); // 상태확인
@@ -290,6 +290,7 @@ void GameManager::OpenShop() {
 			image.Loading2(60, 3);
 			continue;
 		}
+
 
 		shop.BuyItem(choice, character);
 	}

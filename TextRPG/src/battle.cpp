@@ -41,7 +41,7 @@ void battle() {
 	//우측 메뉴창 출력
 	image->RenderMenu();
 	image->Loading2(60, 3);
-	image->ShowNowUI("전투중입니다.", "화이팅 '~' (임시 내용)");
+	image->ShowNowUI("전투중입니다.", "화이팅 '~'");
 	
 	// 몬스터 등장 알림
 	cout << "\n몬스터 등장! " << monster->getName()
@@ -125,7 +125,7 @@ void bossBattle() {
 	//우측 메뉴창 출력
 	image->RenderMenu();
 	image->Loading2(60, 3);
-	image->ShowNowUI("최종 보스와 전투중입니다.", "화이팅 '~' (임시 내용)");
+	image->ShowNowUI("최종 보스와 전투중입니다.", "화이팅 '~')");
 	image->BossImage(); //몬스터에 맞는 이미지로 변경됨
 
 
