@@ -34,7 +34,7 @@ void Monster::takeDamage(int damage)
 		image->RenderMenu();
 		image->Loading2(60, 3);
 		//Text RPG 이미지 출력 >> 창 아래로 커서 이동
-		image->ShowNowUI("전투중입니다.", "화이팅 '~' (임시 내용)");
+		image->ShowNowUI("전투중입니다.", "화이팅 '~'");
 		MonsterHealth = 0;
 		cout << MonsterName << "이(가)" << damage << "의 피해를 입었습니다. 남은 체력: " << MonsterHealth << endl;
 		cout << MonsterName << "을(를) 처리했습니다!";
