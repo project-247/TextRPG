@@ -200,10 +200,22 @@ void GameManager::SelectJob() {
 				cout<<ReturnInputJobInfo(input);
 			}
 			else {
+				system("cls");
+				//system("cls"); 밑에 적어주세요
+				image.leaf();
+				SetImageUI();
+				image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
 				std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n";
 			}
 		}
 		else {
+			system("cls");
+			//system("cls"); 밑에 적어주세요
+			image.leaf();
+			SetImageUI();
+			image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
 			std::cout << "유효하지 않은 직업 번호입니다. 다시 선택해주세요.\n";
 		}
 
