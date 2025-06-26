@@ -15,7 +15,7 @@ private:
 	int ChHP = 200;
 	int ChAttack = 30;
 	int ChExperience = 0;        //캐릭터 레벨 경험치. setExp()로 설정. getExp()로 반환
-	int ChMax = 10;             //n레벨 경험치 // 변경했으니 ReadMe에 작성하기
+	int ChMax = 30;             //n레벨 경험치 // 변경했으니 ReadMe에 작성하기
 	long long ChGold = 100;       //초기 소지금액
 	int MaxHP = 200;
 

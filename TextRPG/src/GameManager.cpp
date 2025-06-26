@@ -101,6 +101,7 @@ void GameManager::CreateCharacter() {
 }
 
 void GameManager::StartGame() {
+	srand(time(0));
 	image.leaf();
 	SetImageUI();
 	image.ShowNowUI("환영합니다 유저님", "캐릭터 생성중 (임시 내용)");
@@ -132,6 +133,8 @@ void GameManager::StartGame() {
 		}
 		else if (menu == 2) { // 상태확인
 			ShowCharacterStatus();
+			cout << "\n\033[38;2;80;80;80m상태 확인 완료 후 아무 키나 입력하세요.\033[0m";
+			_getch();
 		}
 		else if (menu == 3) { // 종료
 			std::cout << "게임 종료" << std::endl;
@@ -170,7 +173,7 @@ void GameManager::SelectJob() {
 		std::cin >> input;
 
 		if (input > 0 && input < 5) {
-			std::cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오): ";
+			std::cout << ReturnInputJobName(input) << " 선택? (1. 예 / 2. 아니오 / 3. 설명 보기): ";
 			std::cin >> input2;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
@@ -186,6 +189,15 @@ void GameManager::SelectJob() {
 				image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
 
 				std::cout << "직업 선택을 다시 합니다.\n";
+			}
+			else if (input2 == 3) {
+				system("cls");
+				//system("cls"); 밑에 적어주세요
+				image.leaf();
+				SetImageUI();
+				image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
+
+				cout<<ReturnInputJobInfo(input);
 			}
 			else {
 				std::cout << "잘못된 입력입니다. 다시 선택해주세요.\n";

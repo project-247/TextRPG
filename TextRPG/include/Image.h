@@ -24,6 +24,9 @@ public:
 
 	void Bencie();
 
+	void BossImage();
+	void BossImage2();
+
 	//몬스터 이름을 입력받아 함수를 실행하는 함수
 	void ReturnInputImage(std::string);
 

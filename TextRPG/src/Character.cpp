@@ -24,6 +24,7 @@ Character* Character::NewCharacter() {
 void Character::ChExpUp(int exp) {   //입력 : 몬스터 처치 경험치
 	ChExperience += exp;
 	while (ChExperience >= ChMax) {
+		if (ChLevel >= 10) { break; }
 		LevelUp();
 	}
 }
@@ -59,10 +60,10 @@ void Character::MaxUp() {
 
 //LevelUp()시 체력과 공격력 초기화 메서드
 void Character::UpdateLevelStats() {
-	MaxUp(); //LevelUp()시 경험치 max 초기화 메서드 > 오류안나겟지?..
-	ChHP = MaxHP + 20;          // 체력 전체 회복 + 20상승
+	MaxUp();
+	if (ChHP < MaxHP + 20) { ChHP = MaxHP + 20; }      // 체력 전체 회복 + 20상승
 	MaxHP = ChHP;                           // **체력**: `(현재 체력 + (레벨 × 20))
-	ChAttack = 30 + (ChLevel * 5);    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
+	ChAttack = ChAttack + 5;    // **캐릭터 공격력**: `(기본 공격력 + (레벨 × 5))
 }
 
 //체력 변동 메서드
@@ -146,7 +147,7 @@ void Character::equipWeapon()
 
 void Character::showEquippedWeapon()
 {
-	std::cout << "무기 : " << inventory->ReturnNowWeapon().getName() << " (공격력 +" << inventory->NowWeaponAttack() << ")" << std::endl;
+	std::cout << "무　기 : " << inventory->ReturnNowWeapon().getName() << " (공격력 +" << inventory->NowWeaponAttack() << ")" << std::endl;
 }
 
 //void SetEquippedWeaponName() {

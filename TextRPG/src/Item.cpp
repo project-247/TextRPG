@@ -19,7 +19,6 @@ void Item::use(Character* player) {
         std::cerr << "Error: 캐릭터가 없습니다.\n";
         return;
     }
-        srand(time(0));
         int a1 = rand() % 450 + 50;
 
     switch (type) {
