@@ -88,7 +88,6 @@ bool Shop::BuyItem(int index, Character* player) {
     image.Loading2(60, 3);
     image.ShowCharacterUI(character->GetChName(), character->GetChLevel(), character->GetChJob(), character->GetChHP(), character->RetInventory().ReturnNowWeapon().getName(), character->GetChAttack(), character->GetGold());
 
-    _getch();
 // ---------------------------------------------------------------------------------------------------------------
 
     if (item.getType() == ItemType::HEAL || item.getType() == ItemType::BOOST || item.getType() == ItemType::GOLD) {

@@ -18,7 +18,6 @@ private:
 	int ChMax = 10;             //n레벨 경험치 // 변경했으니 ReadMe에 작성하기
 	long long ChGold = 100;       //초기 소지금액
 	int MaxHP = 200;
-	//Item UserWeapon;			//소지 무기 중 공격력이 가장 강한 무기
 
 	std::string JobName = "무직";  // 직업 저장
 
@@ -91,12 +90,8 @@ public:
 
 	//직업 함수
 	void SetJob(std::string);
+
 	std::string GetChJob();
-
-	//인벤토리 반환 함수(없어도 inventory 목록 출력 가능한가?)
-
-	//무기 장착 시 공격력 상승 메서드 > inventory의 공격력 반환 메서드 NowWeaponAttack()로 대체
-	//void ChanghCHAttack();
 
 	// 무기 장착 함수 (무기 이름, 공격력 받아서 장착)
 	void equipWeapon();

@@ -20,7 +20,7 @@ int Monster::getAttack() {
 
 void Monster::takeDamage(int damage)
 {
-	Character* character = Character::NewCharacter();//¿À·ù
+	Character* character = Character::NewCharacter();
 	Image* image = new Image();
 	MonsterHealth -= damage;
 	

@@ -130,7 +130,6 @@ void Character::SetJob(std::string job) {
 	}
 	else if (job == "무직") {
 	}
-	//UpdateLevelStats(); // 직업 변경시 스탯 업데이트 > 오류 발생 > 삭제
 }
 
 std::string Character::GetChJob()
